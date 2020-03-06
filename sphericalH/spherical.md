@@ -1,6 +1,6 @@
 **球谐函数的渐进形式**
 
-最近在研究量子散射在高能下的半经典形式。因为入射能较高的关系，在做分波展开的时候，通常情况下*lmax*的取值会很大，那么对于这种情况，相对于完全求解该分波下的球谐函数，我们可以考虑它的渐进形式来简便运算。
+最近在研究量子散射在高能下的半经典形式。因为入射能较高的关系，在做分波展开的时候，通常情况下*lmax*的取值会很大，那么对于这种情况，相对于完全求解该分波下的球谐函数，在一些文献中（大多数半经典文献中），比如J. Phys. G : Nucl. Phys. 4 1573（1978），采用了球谐函数的渐进形式。
 
 球谐函数被定义为
 
@@ -46,3 +46,18 @@
 对于高能散射来说，我们假设有效的部分原来于*m*值比较小的项并且忽略*m*值比较大的， 因此我们忽略掉上式的指数项。 最终我们得到球谐函数的渐进表达式为
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Y_{l&space;m}(\theta,&space;\phi)=\frac{(-)^m}{\pi}\frac{\cos&space;\left[\left(l&plus;\frac{1}{2}\right)&space;\theta-\frac{\pi}{4}&plus;\frac{m&space;\pi}{2}\right]}{\sqrt{\sin&space;\theta}}&space;e^{i&space;m&space;\phi}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y_{l&space;m}(\theta,&space;\phi)=\frac{(-)^m}{\pi}\frac{\cos&space;\left[\left(l&plus;\frac{1}{2}\right)&space;\theta-\frac{\pi}{4}&plus;\frac{m&space;\pi}{2}\right]}{\sqrt{\sin&space;\theta}}&space;e^{i&space;m&space;\phi}" title="Y_{l m}(\theta, \phi)=\frac{(-)^m}{\pi}\frac{\cos \left[\left(l+\frac{1}{2}\right) \theta-\frac{\pi}{4}+\frac{m \pi}{2}\right]}{\sqrt{\sin \theta}} e^{i m \phi}" /></a>
+
+
+
+然而，在进行数值计算对比球谐函数的精确解和渐进形式时，我们发现球谐函数的渐进根本不等于其精确解， 比如我们选取l=100, m=1, theta=30, phi=0时，进行求解
+
+- 精确解为：-0.45018217559285850
+- 渐进形式为：0.45015815807855308
+
+可以发现其中4位有效数字相同，但是结算结果的正负正好相反， 而且在进一步的计算中我们发现m>1的情况下，即使l>1000,渐进形式也只能保证1位有效数字相同， 比如l=1000, m=2, theta=10, phi=0时
+
+ - 精确解为：0.37489043596257088
+ - 渐进形式为：0.38193109381036577
+
+
+ 奇怪的是，这个渐进形式被广泛的应用到半经典散射理论中，那么半经典散射理论的可靠性到底有多少呢？？？？Any hints？？？？
