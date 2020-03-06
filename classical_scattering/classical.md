@@ -41,7 +41,7 @@
 <a href="https://www.codecogs.com/eqnedit.php?latex=\phi=\int_{r_{min}}^{\infty}&space;\frac{P_L&space;d&space;r&space;/&space;r^{2}}{\sqrt{2&space;m(E-U(r))-P_{L}^{2}&space;/&space;r^{2}}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\phi=\int_{r_{min}}^{\infty}&space;\frac{P_L&space;d&space;r&space;/&space;r^{2}}{\sqrt{2&space;m(E-U(r))-P_{L}^{2}&space;/&space;r^{2}}}" title="\phi=\int_{r_{min}}^{\infty} \frac{P_L d r / r^{2}}{\sqrt{2 m(E-U(r))-P_{L}^{2} / r^{2}}}" /></a>
 
 
-其中*r_{min}*为入射粒子与靶核的最短距离，也是上式根号内表达式为*0*时的*r*值。为了方便后续的讨论，我们使用入射粒子速度*v_in*和碰撞参数*p*为变量， 因此，入射粒子能量与角动量可以表述为
+其中*r_{min}*为入射粒子与靶核的最短距离，也是上式根号内表达式为*0*时的*r*值。为了方便后续的讨论，我们使用入射粒子速度*v_in*和碰撞参数*p*为变量，入射粒子能量与角动量可以表述为
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=E=\frac{1}{2}&space;m&space;v_{i&space;n}^{2},&space;\quad&space;P_{L}=m&space;p&space;v_{i&space;n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E=\frac{1}{2}&space;m&space;v_{i&space;n}^{2},&space;\quad&space;P_{L}=m&space;p&space;v_{i&space;n}" title="E=\frac{1}{2} m v_{i n}^{2}, \quad P_{L}=m p v_{i n}" /></a>
 
@@ -49,7 +49,7 @@
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\phi=\int_{r_{min}}^{\infty}&space;\frac{\left(p^{2}&space;/&space;r^{2}\right)&space;d&space;r}{\sqrt{1-\left(p^{2}&space;/&space;r^{2}\right)-\left(2&space;U&space;/&space;m&space;v_{i&space;n}^{2}\right)}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\phi=\int_{r_{min}}^{\infty}&space;\frac{\left(p^{2}&space;/&space;r^{2}\right)&space;d&space;r}{\sqrt{1-\left(p^{2}&space;/&space;r^{2}\right)-\left(2&space;U&space;/&space;m&space;v_{i&space;n}^{2}\right)}}" title="\phi=\int_{r_{min}}^{\infty} \frac{\left(p^{2} / r^{2}\right) d r}{\sqrt{1-\left(p^{2} / r^{2}\right)-\left(2 U / m v_{i n}^{2}\right)}}" /></a>
 
-通过*\phi*角与*\theta*角的关系式，我们得到碰撞参数与散射角的关系式。 通过上述表达式可以发现，一个*\phi*角只对应一个碰撞参数。 因此当碰撞参数处于*p(\theta)*和*p(\theta)+dp(\theta)*之间时，散射角度对应的区间为*\theta*到*\theta+d\theta*。通过该散射角区域的粒子数通过半径为*p*和*p+dp*之间环形的面积乘以粒子流密度*n*求得，
+通过*\phi*角与*\theta*角的关系式，我们得到碰撞参数与散射角的关系式。 通过上述表达式可以发现，一个*\phi*角只对应一个碰撞参数。 因此当碰撞参数处于*p(\theta)*和*p(\theta)+dp(\theta)*之间时，散射角度对应的区间为*\theta*到*\theta+d\theta*。通过该散射角区域的粒子数可以由半径为*p*和*p+dp*之间环形的面积乘以粒子流密度*n*求得，
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=d&space;N=2&space;\pi&space;p&space;d&space;p&space;\cdot&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?d&space;N=2&space;\pi&space;p&space;d&space;p&space;\cdot&space;n" title="d N=2 \pi p d p \cdot n" /></a>
 
