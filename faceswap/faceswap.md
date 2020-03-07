@@ -57,8 +57,9 @@
  - 准备好需要换脸的两个人的照片+视频。 运行下面代码可以从视频中提取人脸
  > python3 faceswap.py extract -i source/yifei/videoplayback.mp4 -o source/yifei/face -D s3fd -A fan -M extended -nm hist -min 20 -l 0.4 -een 1 -sz 256 -si 0 -L INFO
 
-    - -i 后面接的是要提取的视频， -o后面是提取的脸存储的目录
-    - 这步骤会生产一个videoplayback_alignments.fsa，这个文件储存的是对应视频中人脸的位置，在最后给视频换脸的时候程序需要这个文件来找到视频中需要换的人脸。
+   - -i 后面接的是要提取的视频，
+   - -o后面是提取的脸存储的目录
+   - 这步骤会生产一个videoplayback_alignments.fsa，这个文件储存的是对应视频中人脸的位置，在最后给视频换脸的时候程序需要这个文件来找到视频中需要换的人脸。
 
  - 在提取人脸的时候，程序可能会把不是人脸的东西识别成人脸，因此需要手动将这些删除，faceswap提供了以下的工具，可以将相似的图片排列起来，然后把不是想要换的人脸删除即可
  >python3 tools.py sort -i source/yifei/face -s face -t -1.0 -fp rename -g hist -b 5 -be GPU -lf sort_log.json -L INFO
