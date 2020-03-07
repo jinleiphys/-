@@ -67,7 +67,8 @@
  - 在删除不必要的图片后，要运行以下代码更新.fsa文件
  >python3 tools.py alignments -j remove-faces -a source/yifei/videoplayback_alignments.fsa -fc source/yifei/face -o console -een 1 -sz 256 -L INFO
 
-   - -a 后面接的是fsa文件， -fc后面接的是人脸文件夹
+   - -a 后面接的是fsa文件，
+   - -fc后面接的是人脸文件夹
 
  - 在准备好需要换脸的两个文件夹后，就可以进行模型训练了， 运行以下代码
 
