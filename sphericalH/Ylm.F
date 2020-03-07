@@ -6,27 +6,31 @@
 
       pi=acos(-1.0d0)
       iu=cmplx(0.0d0,1.0d0)
-
-      write(*,*) "please enter l and m"
-      read(*,*) l,m
+      
       write(*,*) "please enter theta and phi in degree"
       read(*,*) theta, phi
 
 
        theta=theta*pi/180.
        phi=phi*pi/180.
+       
+       
+       do m=0,2
+        write(*,*) ">m=",m
+        write(*,*) ">"
+        write(*,*) "> l   Ylm_exact", "  Ylm_asy"
+        write(*,*) ">"
+         do l=10, 100, 5
+           Ylm=exp(iu*m*phi) * cos( (l+0.5)*theta - 0.25*pi
+     &         +0.5*m*pi ) / pi / sqrt(sin(theta)) 
+            call SPYLM(l,m,cos(theta),y)
 
 
-       Ylm=(-1.0)**m * exp(iu*m*phi) * cos( (l+0.5)*theta - 0.25*pi
-     &  + 0.5*m*pi ) / pi / sqrt(sin(theta)) 
-
-
-        write(*,*) "Ylm_asymptotic=", ylm
-        call SPYLM(l,m,cos(theta),y)
-        
-        write(*,*) "YLM_exact=", y*exp(iu*abs(m)*phi)
-
-
+             write(*,100)">",l,real(ylm),real(y*exp(iu*abs(m)*phi))
+                     write(*,*) ">"
+        end do 
+       end do 
+100   format(a2,I3, 4x, f7.4,4x,f7.4)
       end program
       
       
