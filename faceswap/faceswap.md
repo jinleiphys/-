@@ -12,9 +12,23 @@
 ![alt text](https://github.com/jinleiphys/notes/blob/master/faceswap/ngrok.jpeg?raw=true)
 
  - 建立一个新的colab notebook， 点开Edit->Notebook settings,选中GPU和python3
+![alt text](https://github.com/jinleiphys/notes/blob/master/faceswap/notebook_setting.jpeg?raw=true)
 
+ - 复制运行以下代码显示分配到的GPU信息，如下所示我分配到了16G显存的P100
+> gpu_info = !nvidia-smi   
+ gpu_info = '\n'.join(gpu_info)   
+ if gpu_info.find('failed') >= 0:    
+   print('Select the Runtime → "Change runtime type" menu to enable a GPU accelerator, ')   
+   print('and then re-execute this cell.')  
+ else:  
+   print(gpu_info)   
 
- - 复制运行以下代码。根据提示输入相关的信息
+ ![alt text](https://github.com/jinleiphys/notes/blob/master/faceswap/gpu_info.jpeg?raw=true)
+
+ - 挂载Google drive
+ 
+
+ - 复制运行以下代码。根据提示输入相关的信息，建立ssh代理通道
 
 > !pip install git+https://github.com/demotomohiro/remocolab.git    
 > import remocolab    
@@ -23,5 +37,3 @@
 ![alt text](https://github.com/jinleiphys/notes/blob/master/faceswap/colab.jpeg?raw=true)
 
  - 根据输出的提示即可使用ssh连接到所需要的服务器
-
- - 另外运行以下代码可以
