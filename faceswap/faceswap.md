@@ -11,8 +11,17 @@
  - 首先借助Ngrok，它是一个连接公共网络和本地网络的一个代理软件，需要在它的网站上注册一个账号，并且下载运行它的软件，让这个网站可以通过特定的识别码找到你的本地电脑。当然它也是免费的
 ![alt text](https://github.com/jinleiphys/notes/blob/master/faceswap/ngrok.jpeg?raw=true)
 
- - 建立一个新的colab notebook, 并复制运行以下代码。根据提示输入相关的信息
+ - 建立一个新的colab notebook， 点开Edit->Notebook settings,选中GPU和python3
+
+
+ - 复制运行以下代码。根据提示输入相关的信息
 
 > !pip install git+https://github.com/demotomohiro/remocolab.git    
 > import remocolab    
 > remocolab.setupSSHD()
+
+![alt text](https://github.com/jinleiphys/notes/blob/master/faceswap/colab.jpeg?raw=true)
+
+ - 根据输出的提示即可使用ssh连接到所需要的服务器
+
+ - 另外运行以下代码可以
