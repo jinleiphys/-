@@ -67,7 +67,7 @@
 
  在对比Mathematica和Joachain书上关于球谐函数的定义时，我发现Joachinian书上包含了一个(-)^m的参数，然后Mathematica上面并没有包含这个参数。 再进一步对比伴随勒让德多项式的定义时发现，Mathematica的定义上面包含了(-)^m参数，然后Joachain书没有这个参数。 综合起来看，Mathematica和Joachain书对于球谐函数的定义是一致的。
 
- 那么接来下要做的就是查看伴随勒让德多项式有以下渐进形式本身是否已经包含了这个参数， 通过查找Handbook of Mathematical Functions with Formulas书上的定义， 公式(8.6.6)给出的定义包含(-)^m，因此其渐进形式本身(8.10.7)已经把这个参数包含在内。 因此最终的球谐函数渐进形式，如果想和Mathematica和Joachain书对比的话， 需要去掉(-)^m这个参数。
+ 那么接来下要做的就是查看伴随勒让德多项式的渐进形式本身是否已经包含了这个参数， 通过查找Handbook of Mathematical Functions with Formulas书上的定义， 公式(8.6.6)给出的定义包含(-)^m，因此其渐进形式本身(8.10.7)已经把这个参数包含在内。 因此最终的球谐函数渐进形式，如果想和Mathematica和Joachain书对比的话， 需要去掉(-)^m这个参数。
 
 
 然而半经典理论家们，带着这个参数进行了大量计算了，并试图和不包含这个参数计算结果的量子理论继续对比？？？？意义何在？？
