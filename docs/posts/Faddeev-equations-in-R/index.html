@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jin Lei">
+<meta name="dcterms.date" content="2024-04-17">
+
+<title>notes - Faddeev Equations in R Space</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jinleiphys"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Faddeev Equations in R Space</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jin Lei </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 17, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="use-complex-scaling-method-to-solve-unequal-mass-faddeev-equations-in-r-space" class="level1">
+<h1>Use complex scaling method to solve unequal mass Faddeev Equations in R-space</h1>
+<p>The Faddeev equations provide a rigorous framework for the analysis of three-body systems in quantum mechanics. These equations are particularly useful in the study of scattering processes involving three unequal mass particles, denoted as <span class="math inline">\(i\)</span>, <span class="math inline">\(j\)</span>, and <span class="math inline">\(k\)</span>. The equations take into account pairwise interactions and the complexities introduced by the Coulomb force. This research note outlines the application of the complex scaling method to solve the Faddeev equations in R-space for unequal mass particles.</p>
+<section id="faddeev-equations-for-three-body-systems" class="level2">
+<h2 class="anchored" data-anchor-id="faddeev-equations-for-three-body-systems">Faddeev Equations for Three-Body Systems</h2>
+<p>The Faddeev equations for a system of three unequal mass particles in their respective Jacobi coordinates are given by: <span class="math display">\[
+\begin{aligned}
+(E-H_0) \psi_{ij} &amp;= V_{ij} \Psi \\
+(E-H_0) \psi_{jk} &amp;= V_{jk} \Psi \\
+(E-H_0) \psi_{ki} &amp;= V_{ki} \Psi,
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(E\)</span> is the total energy, <span class="math inline">\(H_0\)</span> is the free Hamiltonian, <span class="math inline">\(\Psi\)</span> represents the three-body wave function, and <span class="math inline">\(\psi_{ij}\)</span>, <span class="math inline">\(\psi_{jk}\)</span>, and <span class="math inline">\(\psi_{ki}\)</span> are the Faddeev components corresponding to each pair of particles in their respective Jacobi coordinates.</p>
+</section>
+<section id="coulomb-interaction-and-cutoff-function" class="level2">
+<h2 class="anchored" data-anchor-id="coulomb-interaction-and-cutoff-function">Coulomb Interaction and Cutoff Function</h2>
+<p>When incorporating the Coulomb interaction, the potential <span class="math inline">\(V_{ij}^C\)</span> is divided into short-range <span class="math inline">\(\omega_{ij}^s\)</span> and long-range <span class="math inline">\(\omega_{ij}^l\)</span> parts through a cutoff function <span class="math inline">\(\chi_{ij}(x_k,y_k)\)</span>: <span class="math display">\[
+\begin{aligned}
+\omega_{ij}^s(x_k,y_k) &amp;= V_{ij}^C \chi_{k}(x_k,y_k) \\
+\omega_{ij}^l(x_k,y_k) &amp;= V_{ij}^C [1-\chi_{k}(x_k,y_k)].
+\end{aligned}
+\]</span></p>
+<p>The cutoff function <span class="math inline">\(\chi_k(x_k,y_k)\)</span> is designed to transition the full Coulomb interaction to the <span class="math inline">\(\omega_{ij}^s\)</span> term when <span class="math inline">\(x_k\)</span> is small, while the <span class="math inline">\(\omega_{ij}^l\)</span> term takes over as <span class="math inline">\(x_k\)</span> grows large, provided <span class="math inline">\(y_k &lt; x_k\)</span>. A commonly used form for <span class="math inline">\(\chi_k(x_k,y_k)\)</span> is given by:</p>
+<p><span class="math display">\[
+\chi_k(x_k,y_k) = \frac{2}{1+\exp{\left[\frac{(x_k/x_0)^\mu}{1+y_k/y_0}\right]}},
+\]</span></p>
+<p>where <span class="math inline">\(x_0\)</span>, <span class="math inline">\(y_0\)</span>, and <span class="math inline">\(\mu\)</span> are parameters that can be set differently for each channel <span class="math inline">\(k\)</span>. It is required that <span class="math inline">\(\mu &gt; 2\)</span>. The parameter <span class="math inline">\(x_0\)</span> is related to the effective size of the two-body interaction, which is logical to associate with the size of a two-body bound state. Meanwhile, <span class="math inline">\(y_0\)</span> correlates with the size of the three-body region significant for three-particle overlap.</p>
+<p>The complete interacting potential between particles <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, denoted as <span class="math inline">\(V_{ij}\)</span>, is the sum of the nuclear potential <span class="math inline">\(V_{ij}^N\)</span> and the Coulomb potential <span class="math inline">\(V_{ij}^C\)</span>. This potential can be expressed as:</p>
+<p><span class="math display">\[
+V_{ij} = V_{ij}^N + V_{ij}^C = V_{ij}^S + \omega_{ij}^l,
+\]</span></p>
+<p>where <span class="math inline">\(V_{ij}^S\)</span> represents the short-range part of the potential, which encompasses both the nuclear potential and the short-range Coulomb potential, and <span class="math inline">\(\omega_{ij}^l\)</span> denotes the long-range part of the Coulomb potential.</p>
+</section>
+<section id="faddeev-merkuriev-equations" class="level2">
+<h2 class="anchored" data-anchor-id="faddeev-merkuriev-equations">Faddeev-Merkuriev Equations</h2>
+<p>To address the three-body problem with Coulomb interactions, the Faddeev-Merkuriev equations, formulated by S.P. Merkuriev, are employed: <span class="math display">\[
+\begin{align}
+(E-H_0-W) \psi_{ij} &amp;= V_{ij}^S \Psi, \\
+(E-H_0-W) \psi_{jk} &amp;= V_{jk}^S \Psi, \\
+(E-H_0-W) \psi_{ki} &amp;= V_{ki}^S \Psi,
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(\Psi\)</span> is the total three-body wave function, and <span class="math inline">\(\psi_{ij}\)</span>, <span class="math inline">\(\psi_{jk}\)</span>, and <span class="math inline">\(\psi_{ki}\)</span> are the Faddeev components in the Coulomb basis. An alternative form of the Faddeev-Merkuriev equations is given by:</p>
+<p><span class="math display">\[
+\begin{align}
+(E-H_0-V_{ij}-W_k) \psi_{ij} &amp;= V_{ij}^S (\psi_{jk}+\psi_{ki}), \\
+(E-H_0-V_{jk}-W_i) \psi_{jk} &amp;= V_{jk}^S (\psi_{ij}+\psi_{ki}), \\
+(E-H_0-V_{ki}-W_j) \psi_{ki} &amp;= V_{ki}^S (\psi_{ij}+\psi_{jk}),
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(W\)</span> is the sum of the long-ranged parts of the Coulomb interactions, <span class="math inline">\(W=\omega_{ij}^l + \omega_{jk}^l + \omega_{ki}^l\)</span>, and <span class="math inline">\(W_k=\omega_{jk}^l + \omega_{ki}^l\)</span>, <span class="math inline">\(W_i\)</span>, and <span class="math inline">\(W_j\)</span> are defined accordingly.</p>
+</section>
+<section id="initial-state-wave-function" class="level2">
+<h2 class="anchored" data-anchor-id="initial-state-wave-function">Initial State Wave Function</h2>
+<p>Considering the initial state of a reaction system <span class="math inline">\((i+j)+k\)</span>, where a projectile composed of bodies <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> collides with a target <span class="math inline">\(k\)</span>, the initial state wave function <span class="math inline">\(\psi_{ij}^{in}\)</span> is introduced. The Faddeev components can then be expressed as: <span class="math display">\[
+\begin{align}
+\psi_{ij} = \psi_{ij}^{in} + \psi_{ij}^{sc}, \\
+\psi_{jk} = \ \ \ \ \ + \psi_{jk}^{sc}, \\
+\psi_{ki} = \ \ \ \ \ + \psi_{ki}^{sc},
+\end{align}
+\]</span></p>
+<p>indicating that only the Faddeev component with the incoming Jacobi coordinate contains the initial state. The term <span class="math inline">\(\psi_{ij}^{in}\)</span> is a free incoming wave of the pair <span class="math inline">\(i+j\)</span> with respect to target <span class="math inline">\(k\)</span>. In the absence of the Coulomb force, <span class="math inline">\(\psi_{ij}^{in}\)</span> would simply be the product of the plane wave and the bound state of <span class="math inline">\(ij\)</span>. However, in the presence of the Coulomb force, its form becomes more complex due to the long-range nature of the Coulomb interaction, which can polarize and excite the projectile. It may be beneficial to represent the incoming wave function using distorted waves, which can be generalized by the equation:</p>
+<p><span class="math display">\[
+(E-H_0 -V_{ij} - \tilde{W}_k)  \psi_{ij}^{in} = 0,
+\]</span></p>
+<p>where <span class="math inline">\(\tilde{W}_k(\vec{x}_k,\vec{y}_k)\)</span> is an auxiliary long-range potential that is exponentially bound in the <span class="math inline">\(x_\alpha\)</span> direction and does not contribute to the particle recombination process. This potential can be expressed using a separable expansion:</p>
+<p><span class="math display">\[
+\tilde{W}_k(\vec{x}_k,\vec{y}_k) = \sum_a | \varphi_a^{ij}(\vec{x}_k) \rangle V_{(ij)k}^C(\vec{y}_k) \langle \varphi_a^{ij}(\vec{x}_k) |,
+\]</span></p>
+<p>where <span class="math inline">\(\varphi_a^{ij}\)</span> represents the bound state of the pair system <span class="math inline">\(ij\)</span>. The incoming wave function <span class="math inline">\(\psi_{ij}^{in}\)</span> is then given by:</p>
+<p><span class="math display">\[
+\psi_{ij}^{in} (\vec{x}_k, \vec{y}_k) = \varphi_{a,in}^{ij}(\vec{x}_k) F(\vec{y}_k),
+\]</span></p>
+<p>with <span class="math inline">\(F(\vec{y}_k)\)</span> being the Coulomb function generated by <span class="math inline">\(V_{(ij)k}^C(\vec{y}_k)\)</span> in the corresponding Jacobi coordinates.</p>
+<p>In such a way the Faddeev amplitude <span class="math inline">\(\psi_{ij}\)</span> intends tp acquire full asymptotic behavior of the binary <span class="math inline">\((ij)-k\)</span> channel, i.e: <span class="math display">\[
+\begin{aligned}
+\psi_{ij}(\vec{x}_k,\vec{y}_k \to \infty) = &amp;  \delta_{a_{in},a} \varphi_a^{ij}(\vec{x}_k)F(\vec{y}_k) + \sum_a f_a^k(\vec{x}_k,\vec{y}_k)\varphi_a^{ij}(\vec{x}_k)\phi_a^{k,out}(\vec{y}_k)\\
+&amp; + A_{(ij)k}(\vec{x}_k,\vec{y}_k)\Phi_k^{out}(\rho)，
+\end{aligned}
+\]</span> where <span class="math inline">\(\rho=\sqrt{x_k^2 + y_k^2}\)</span> defines the hyperradius, a coordinate which characterizes the size of the three-body system.</p>
+<ul>
+<li><p>The term <span class="math inline">\(\delta_{a_{in},a} \varphi_a^{ij}(\vec{x}_k)F(\vec{y}_k)\)</span> represents the incoming boundary condition, which is the product of the bound state <span class="math inline">\(\varphi_a^{ij}(\vec{x}_k)\)</span> of the pair <span class="math inline">\((ij)\)</span> and the Coulomb function <span class="math inline">\(F(\vec{y}_k)\)</span>, indicating the initial state of the system.</p></li>
+<li><p>The sum over <span class="math inline">\(a\)</span> involving <span class="math inline">\(f_a^k(\vec{x}_k,\vec{y}_k)\varphi_a^{ij}(\vec{x}_k)\phi_a^{k,out}(\vec{y}_k)\)</span> accounts for the outgoing waves corresponding to binary reactions where the pair <span class="math inline">\((ij)\)</span> remains bound after the interaction, with <span class="math inline">\(f_a^k\)</span> being the scattering amplitude and <span class="math inline">\(\phi_a^{k,out}(\vec{y}_k)\)</span> representing the outgoing wave of particle <span class="math inline">\(k\)</span>.</p></li>
+<li><p>Lastly, <span class="math inline">\(A_{(ij)k}(\vec{x}_k,\vec{y}_k)\Phi_k^{out}(\rho)\)</span> describes the three-particle breakup with <span class="math inline">\(A_{(ij)k}\)</span> being the breakup amplitude and <span class="math inline">\(\Phi_k^{out}(\rho)\)</span> representing the outgoing wave for the three-particle breakup channel.</p></li>
+</ul>
+<p>This expression encompasses the full range of possible outcomes in a three-body scattering event, including elastic scattering, inelastic scattering, and breakup processes.</p>
+</section>
+<section id="driven-form-of-faddeev-merkuriev-equations" class="level2">
+<h2 class="anchored" data-anchor-id="driven-form-of-faddeev-merkuriev-equations">Driven Form of Faddeev-Merkuriev Equations</h2>
+<p>In the asymptote, one has the following behavior: <span class="math display">\[
+\begin{align}
+\varphi_a^{ij}(x_k \to \infty) \propto \exp(-k_ax_a), \\
+\phi_a^{k,out}(y_k \to \infty) \propto \exp(i q_a y_k), \\
+\Phi_k^{out}(\rho)(\rho \to \infty) \propto \exp(i\kappa\rho),
+\end{align}
+\]</span> Then Faddeev-Merkuriev equations might be rewritten in a so-called driven form: <span class="math display">\[
+\begin{align}
+(E-H_0-V_{ij}-W_k) \psi^{sc}_{ij} &amp;= V_{ij}^S (\psi^{sc}_{jk}+\psi^{sc}_{ki}) + (W_k- \tilde{W}_k)\psi_{ij}^{in}, \\
+(E-H_0-V_{jk}-W_i) \psi^{sc}_{jk} &amp;= V_{jk}^S (\psi^{sc}_{ij}+\psi^{in}_{ij}+\psi^{sc}_{ki}),\\
+(E-H_0-V_{ki}-W_j) \psi^{sc}_{ki} &amp;= V_{ki}^S (\psi^{sc}_{ij} + \psi_{ij}^{in}+\psi^{sc}_{jk}).
+\end{align}
+\]</span></p>
+</section>
+<section id="comprehensive-statement-of-faddeev-merkuriev-equations" class="level2">
+<h2 class="anchored" data-anchor-id="comprehensive-statement-of-faddeev-merkuriev-equations">Comprehensive Statement of Faddeev-Merkuriev Equations</h2>
+<p>Let’s construct a comprehensive statement that encapsulates all the given information about the Faddeev-Merkuriev equations for the bound state problem in quantum mechanics. The statement will include the equations themselves, the angular momentum basis, the representation of the wave function, and the forms of the kinetic energy operator, the pair potential, and the remnant Coulomb interaction.</p>
+<p>In the study of three-body bound state problems in quantum mechanics, the Faddeev-Merkuriev equations play a pivotal role by providing a framework to account for pairwise potential interactions and long-range Coulomb forces. These equations are expressed as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(E-H_0-V_{ij}-W_k) \psi_{ij} &amp;= V_{ij}^S (\psi_{jk}+\psi_{ki}), \\
+(E-H_0-V_{jk}-W_i) \psi_{jk} &amp;= V_{jk}^S (\psi_{ij}+\psi_{ki}),\\
+(E-H_0-V_{ki}-W_j) \psi_{ki} &amp;= V_{ki}^S (\psi_{ij}+\psi_{jk}),
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(E\)</span> is the total energy of the system, <span class="math inline">\(H_0\)</span> is the kinetic energy operator, <span class="math inline">\(V_{ij}\)</span> is the pairwise potential between particles <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, <span class="math inline">\(W_k\)</span> is the remnant Coulomb interaction, and <span class="math inline">\(\psi_{ij}\)</span> is the Faddeev component of the total wave function corresponding to particles <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>. The superscript <span class="math inline">\(S\)</span> on the potentials denotes the symmetrized part of the interaction.</p>
+<p>The angular momentum basis used in the calculations is specified by the ket <span class="math inline">\(| \alpha_k M \rangle\)</span>, which is defined as:</p>
+<p><span class="math display">\[
+| \alpha_k M \rangle = | \big[l_k(s_is_j)s_{ij}\big]j_{ij}, (\lambda_ks_k)j_k; JM\rangle,
+\]</span></p>
+<p>where <span class="math inline">\(l_k\)</span> and <span class="math inline">\(\lambda_k\)</span> are the orbital angular momenta, <span class="math inline">\(s_i\)</span>, <span class="math inline">\(s_j\)</span>, and <span class="math inline">\(s_k\)</span> are the spins of the three particles, <span class="math inline">\(j_{ij}\)</span> and <span class="math inline">\(j_k\)</span> are the total angular momenta, and <span class="math inline">\(J\)</span> and <span class="math inline">\(M\)</span> are the total angular momentum and its projection of the three-body system, respectively.</p>
+<p>This leads to a rewritten form of the Faddeev-Merkuriev equations:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Big\langle x_ky_k\alpha_k \Big| E - H_0 -V_{ij} - W_k \Big| \psi_{ij}\Big \rangle &amp;= \langle x_k y_k \alpha_k | V_{ij}^S \Big( |\psi_{jk}\rangle + |\psi_{ki}\rangle \Big), \\
+\Big\langle x_iy_i\alpha_i \Big| E - H_0 -V_{jk} - W_i \Big| \psi_{jk}\Big \rangle &amp;= \langle x_i y_i \alpha_i | V_{jk}^S \Big( |\psi_{ij}\rangle + |\psi_{ki}\rangle \Big),\\
+\Big\langle x_jy_j\alpha_j \Big| E - H_0 -V_{ki} - W_j \Big| \psi_{ki}\Big \rangle &amp;= \langle x_j y_j \alpha_j | V_{ki}^S \Big( |\psi_{ij}\rangle + |\psi_{jk}\rangle \Big).
+\end{aligned}
+\]</span></p>
+<p>The kinetic energy operator <span class="math inline">\(H_0\)</span> in the Jacobi coordinates <span class="math inline">\(x_k y_k \alpha_k\)</span> is given by:</p>
+<p><span class="math display">\[
+H_0 = -\Delta^{\alpha_k}(x_k,y_k) =\frac{\hbar^2}{2\mu_{ij}}\Big( -\frac{\partial^2}{\partial x_k^2} + \frac{l_k(l_k+1)}{x_k^2} \Big) + \frac{\hbar^2}{2\mu_k}\Big( -\frac{\partial^2}{\partial y_k^2} + \frac{\lambda_k(\lambda_k+1)}{y_k^2} \Big).
+\]</span></p>
+<p>The pair potential in the angular momentum basis is:</p>
+<p><span class="math display">\[
+\langle x_k y_k \alpha_k | V_{ij} | x_k' y_k' \alpha_k' \rangle = \frac{ \delta (y_k-y_k') } {y_k^2} V_{\alpha_k,\alpha_k'} (x_k,x_k') \delta_{j'_{ij},j_{ij}} \delta_{s'_{ij},s_{ij}},
+\]</span></p>
+<p>which simplifies to the following form if the potential is local:</p>
+<p><span class="math display">\[
+\langle x_k y_k \alpha_k | V_{ij} | x_k' y_k' \alpha_k' \rangle = \frac{ \delta (x_k-x_k') } {x_k^2}\frac{ \delta (y_k-y_k') } {y_k^2} V_{\alpha_k,\alpha_k'} (x_k) \delta_{j'_{ij},j_{ij}} \delta_{s'_{ij},s_{ij}}.
+\]</span></p>
+<p>The remnant Coulomb interaction <span class="math inline">\(W_k\)</span> is expanded in the angular momentum basis as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+W_k^{\alpha_k,\alpha_k'}(x_k,y_k) = &amp;2\pi\sum_{LS}(2S+1)\Big[(2j_{ij}+1)(2j_{ij}'+1)(2j_k+1)(2j_k'+1)(2\lambda_k+1)(2\lambda_k'+1) \Big]^{1/2}\\
+&amp;\times \left\{\begin{array}{ccc}
+l_k^{\prime} &amp; \lambda_k^{\prime} &amp; L \\
+s_{ij} &amp; s_k &amp; S \\
+j_{ij}^{\prime} &amp; j_k^{\prime} &amp; J
+\end{array}\right\}
+\left\{\begin{array}{ccc}
+l_k &amp; \lambda_k &amp; L \\
+s_{ij} &amp; s_k &amp; S \\
+j_{ij} &amp; j_k &amp; J
+\end{array}\right\}\\
+&amp;\times \sum_{M_L}\sum_{m_{l_k}}\sum_{m_{\lambda_k}}\sum_{m'_{l_k}}\sum_{m'_{\lambda_k}}\langle l_k m_{l_k} \lambda_k m_{\lambda_k} |LM_L \rangle \\
+&amp;\times \langle l'_k m'_{l_k} \lambda'_k m'_{\lambda_k} |LM_L \rangle \int_{-1}^1 dx W_k(x_k,y_k,x) Y_{l_k}^{m_{l_k}*}(\hat{x}_k)Y_{l'_k}^{m'_{l_k}}(\hat{x}_k).
+\end{aligned}
+\]</span></p>
+</section>
+<section id="transformation-of-jacobi-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="transformation-of-jacobi-coordinates">Transformation of Jacobi Coordinates</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Jacobi.png" class="img-fluid figure-img"></p>
+<figcaption>Jacobi</figcaption>
+</figure>
+</div>
+<p>In the context of Jacobi coordinates, the transformation between different sets of coordinates is given by linear transformations. For a three-body system with masses <span class="math inline">\(m_i\)</span>, <span class="math inline">\(m_j\)</span>, and <span class="math inline">\(m_k\)</span>, and the total mass <span class="math inline">\(M = m_i + m_j + m_k\)</span>, the following coordinate transformations can be defined:</p>
+<p>For the transformation between the coordinates associated with masses <span class="math inline">\(m_k\)</span> and <span class="math inline">\(m_i\)</span>, the relationship is given by:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\vec{x}_k \\
+\vec{x}_i
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{ki} &amp; b_{ki} \\
+c_{ki} &amp; d_{ki}
+\end{bmatrix}
+\begin{bmatrix}
+\vec{y}_k \\
+\vec{y}_i
+\end{bmatrix}
+\]</span></p>
+<p>where the transformation coefficients are:</p>
+<p><span class="math display">\[
+\begin{align}
+a_{ki}&amp;=\frac{m_k(M-m_k)}{m_km_i-(M-m_k)(M-m_i)} \\
+b_{ki}&amp;=\frac{(M-m_k)(M-m_i)}{m_km_i-(M-m_k)(M-m_i)} \\
+c_{ki}&amp;= -\frac{(M-m_k)(M-m_i)}{m_km_i-(M-m_k)(M-m_i)} \\
+d_{ki}&amp;= -\frac{m_i(M-m_i)}{m_km_i-(M-m_k)(M-m_i)}
+\end{align}
+\]</span></p>
+<p>Similarly, for the transformation involving masses <span class="math inline">\(m_j\)</span> and <span class="math inline">\(m_k\)</span>, we have:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\vec{x}_j \\
+\vec{x}_k
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{jk} &amp; b_{jk} \\
+c_{jk} &amp; d_{jk}
+\end{bmatrix}
+\begin{bmatrix}
+\vec{y}_j \\
+\vec{y}_k
+\end{bmatrix}
+\]</span></p>
+<p>with the coefficients:</p>
+<p><span class="math display">\[
+\begin{align}
+a_{jk}&amp;=\frac{m_j(M-m_j)}{m_jm_k-(M-m_j)(M-m_k)} \\
+b_{jk}&amp;=\frac{(M-m_j)(M-m_k)}{m_jm_k-(M-m_j)(M-m_k)} \\
+c_{jk}&amp;= -\frac{(M-m_j)(M-m_k)}{m_jm_k-(M-m_j)(M-m_k)} \\
+d_{jk}&amp;= -\frac{m_k(M-m_k)}{m_jm_k-(M-m_j)(M-m_k)}
+\end{align}
+\]</span></p>
+<p>And finally, for the transformation involving masses <span class="math inline">\(m_i\)</span> and <span class="math inline">\(m_j\)</span>, the transformation is:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\vec{x}_i \\
+\vec{x}_j
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{ij} &amp; b_{ij} \\
+c_{ij} &amp; d_{ij}
+\end{bmatrix}
+\begin{bmatrix}
+\vec{y}_i \\
+\vec{y}_j
+\end{bmatrix}
+\]</span></p>
+<p>where the coefficients are:</p>
+<p><span class="math display">\[
+\begin{align}
+a_{ij}&amp;=\frac{m_i(M-m_i)}{m_im_j-(M-m_i)(M-m_j)} \\
+b_{ij}&amp;=\frac{(M-m_i)(M-m_j)}{m_im_j-(M-m_i)(M-m_j)} \\
+c_{ij}&amp;= -\frac{(M-m_i)(M-m_j)}{m_im_j-(M-m_i)(M-m_j)} \\
+d_{ij}&amp;= -\frac{m_j(M-m_j)}{m_im_j-(M-m_i)(M-m_j)}
+\end{align}
+\]</span></p>
+<p>These transformations allow one to switch between different sets of Jacobi coordinates in the analysis of the three-body problem, facilitating the understanding of the system’s dynamics.</p>
+<section id="evaluation-of-matrix-elements" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-of-matrix-elements">Evaluation of Matrix Elements</h3>
+<p>Consider the matrix element <span class="math inline">\(\langle x_k y_k \alpha_k | V_{ij}^S | \psi_{jk}\rangle\)</span> within the context of quantum mechanics. The evaluation of this term can be expanded as follows: <span class="math display">\[
+\langle x_k y_k \alpha_k | V_{ij}^S | \psi_{jk} \rangle = \sum_{\alpha_k'} \int x_k'^2 dx_k' \langle x_k \alpha_k | V_{ij}^S | x_k' \alpha'_k \rangle \langle x_k' y_k\alpha'_k | \psi_{jk} \rangle
+\]</span> <span class="math display">\[
+= \sum_{\alpha_k'} \int x_k'^2 dx_k'  V_{ij}^S(x_k,x_k')  \langle x_k' y_k\alpha'_k | \psi_{jk} \rangle \delta_{j'_{ij},j_{ij}} \delta_{s'_{ij},s_{ij}},
+\]</span></p>
+<p>where the Kronecker deltas ensure the conservation of quantum numbers related to the interaction <span class="math inline">\(V_{ij}^S\)</span>.</p>
+<p>For the term <span class="math inline">\(\langle x_k' y_k \alpha_k' | \psi_{jk} \rangle\)</span>, we have:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\langle x_k' y_k \alpha'_k | \psi_{jk} \rangle =&amp; \sum_{\alpha_i} \int x_i^2 y_i^2 dx_i dy_i  \langle x_k' y_k \alpha'_k | x_i y_i \alpha_i \rangle \langle x_i y_i \alpha_i | \psi_{jk} \rangle \\
+= &amp;\sum_{\alpha_i} \int x_i^2 y_i^2 dx_i dy_i  \int_{-1}^1 dx\ \mathcal{G}_{\alpha'_k,\alpha_i}(y_k,y_i,x) \frac{\delta(x_k' - \pi_k(y_k,y_i,x))}{x_k'^2} \\
+&amp;\times \frac{\delta(x_i - \pi_i(y_k,y_i,x))}{x_i^2} \langle x_i y_i \alpha_i | \psi_{jk} \rangle,
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\pi_k\)</span> and <span class="math inline">\(\pi_i\)</span> are defined as:</p>
+<p><span class="math display">\[
+\pi_k = \sqrt{a^2_{ki}y_k^2 + 2a_{ki}b_{ki}y_ky_ix + b^2_{ki}y_i^2}, \quad \pi_i = \sqrt{c^2_{ki}y_k^2 + 2c_{ki}d_{ki}y_ky_ix + d^2_{ki}y_i^2},
+\]</span></p>
+<p>and the delta function relationship is given by:</p>
+<p><span class="math display">\[
+\frac{\delta\Big(x'^2_k - \pi_k(y_k,y_i,x)\Big)}{x'^2_k} = \frac{\delta\Big( x-x_0(x_k',y_k,y_i) \Big)}{a_{ki}b_{ki}y_ky_ix'_k},
+\]</span></p>
+<p>with <span class="math inline">\(x_0\)</span> defined as:</p>
+<p><span class="math display">\[
+x_0(x_k',y_k,y_i) = \frac{x'^2_k - a_{ki}^2y_k^2 -b^2_{ki}y_i^2}{2a_{ki}b_{ki}y_ky_i}.
+\]</span></p>
+<p>Thus, the term <span class="math inline">\(\langle x_k' y_k \alpha_k' | \psi_{jk} \rangle\)</span> can be simplified to:</p>
+<p><span class="math display">\[
+\langle x_k' y_k \alpha_k' | \psi_{jk} \rangle = \sum_{\alpha_i} \int \frac{y_idy_i}{a_{ki}b_{ki}x_ky_k} \mathcal{G}_{\alpha'_k,\alpha_i}(y_k,y_i,x_0) \langle x_iy_i\alpha_i | \psi_{jk} \rangle,
+\]</span></p>
+<p>where <span class="math inline">\(\mathcal{G}_{\alpha'_k,\alpha_i}(y_k,y_i,x)\)</span> is <span class="math display">\[
+\begin{align}
+\mathcal{G}_{\alpha'_k,\alpha_i}(y_k,y_i,x) =&amp; \sum_{LS}(2S+1)\sqrt{(2j_{ij}+1)(2j_k+1)(2j_{jk}+1)(2j_i+1)}\begin{Bmatrix}
+l_k &amp; s_{ij} &amp; j_{ij} \\
+\lambda_k &amp; s_k &amp; j_k \\
+L &amp; S &amp; J \\
+\end{Bmatrix} \\
+&amp;\times \begin{Bmatrix}
+l_i &amp; s_{jk} &amp; j_{jk} \\
+\lambda_i &amp; s_i &amp; j_i \\
+L &amp; S &amp; J \\
+\end{Bmatrix} 8\pi^2\sum_{M=-L}^L \Big\{Y_{l_k}^{m_{l_k*}}(\hat{x}_k) Y_{\lambda_k}^{m_{\lambda_k}*}(\hat{y}_k)\Big\}^{LM_L}\Big\{Y_{l_i}^{m_{l_i}}(\hat{x}_i) Y_{\lambda_i}^{m_{\lambda_i}}(\hat{y}_i)\Big\}^{LM_L}\\
+&amp; \times (-)^{s_{jk}+2s_i+s_j+s_k} \sqrt{(2s_{ij}+1)(2s_{jk}+1)}\begin{Bmatrix}
+s_i &amp; s_j &amp; s_{ij} \\
+s_k &amp; S &amp; s_{jk} \\
+\end{Bmatrix}
+\end{align}
+\]</span></p>
+<p>which given by a complex expression involving sums over quantum numbers, Clebsch-Gordan coefficients, and spherical harmonics, ryyeflecting the symmetries and angular momentum coupling in the system.</p>
+<p>Lastly, the symmetry property of the overlap <span class="math inline">\(\langle x_k' y_k \alpha'_k | x_i y_i \alpha_i \rangle= \langle  x_i y_i \alpha_i |x_k' y_k \alpha'_k  \rangle^*\)</span>, where the asterisk denotes complex conjugation, implies that <span class="math inline">\(\mathcal{G}_{\alpha'_k,\alpha_i}(y_k,y_i,x) = \mathcal{G}_{\alpha_i,\alpha'_k}(y_k,y_i,x)\)</span> due to the real nature of the overlap. This symmetry can be used to simplify calculations and ensure the consistency of the theoretical framework.</p>
+</section>
+</section>
+<section id="faddeev-equations-in-lagrange-mesh-basis" class="level2">
+<h2 class="anchored" data-anchor-id="faddeev-equations-in-lagrange-mesh-basis">Faddeev equations in Lagrange mesh basis</h2>
+<p>The Faddeev components can be rewritten in the angular momentum basis as:</p>
+<p><span class="math display">\[
+\begin{align}
+\langle x_k y_k \alpha_k | \psi_{ij}\rangle &amp;= \frac{\phi^k_{\alpha_k}(x_k, y_k)}{x_k y_k}, \\
+\langle x_i y_i \alpha_i | \psi_{jk}\rangle &amp;= \frac{\phi^i_{\alpha_i}(x_i, y_i)}{x_i y_i},\\
+\langle x_j y_j \alpha_j | \psi_{ki}\rangle &amp;= \frac{\phi^j_{\alpha_j}(x_j, y_j)}{x_j y_j},
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(\phi(x,y)\)</span> is the radial part of the wave function, which can be expanded using the Lagrange mesh function as</p>
+<p><span class="math display">\[
+\begin{align}
+\phi_{\alpha_k}^k (x_k, y_k) &amp;= \sum_{kx=1}^{nx} \sum_{ky=1}^{ny}c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k} (x_k)f_{ky}^{\alpha_k}(y_k), \\
+\phi_{\alpha_i}^i (x_i, y_i) &amp;= \sum_{ix=1}^{nx} \sum_{iy=1}^{ny}c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i} (x_i)f_{iy}^{\alpha_i}(y_i), \\
+\phi_{\alpha_j}^j (x_j, y_j) &amp;= \sum_{jx=1}^{nx} \sum_{jy=1}^{ny}c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j} (x_j)f_{jy}^{\alpha_j}(y_j),
+\end{align}
+\]</span></p>
+<p>Then the Faddeev-Merkuriev equations in the Lagrange mesh basis can be rewritten as</p>
+<p><span class="math display">\[
+\Bigg\langle f_{kx'}^{\alpha_k'}f_{ky'}^{\alpha_k'} \Bigg|E-H_0-V_{ij}-W_k \Bigg|\sum_{\alpha_k} \sum_{kx}\sum_{ky} \frac{c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k}f_{ky}^{\alpha_k}}{x_ky_k} \Bigg\rangle \\
+=\Bigg \langle f_{kx'}^{\alpha_k'}f_{ky'}^{\alpha_k'} \Bigg|V_{ij}^S\Bigg( \Big|\sum_{\alpha_i} \sum_{ix}\sum_{iy}\frac{c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i}f_{iy}^{\alpha_i}}{x_iy_i}\Big \rangle  + \Big|\sum_{\alpha_j} \sum_{jx}\sum_{jy}\frac{c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j}f_{jy}^{\alpha_j}}{x_jy_j}\Big \rangle \Bigg)
+\]</span></p>
+<p><span class="math display">\[
+\Bigg\langle f_{ix'}^{\alpha_i'}f_{iy'}^{\alpha_i'} \Bigg|E-H_0-V_{jk}-W_i \Bigg|\sum_{\alpha_i} \sum_{ix}\sum_{iy} \frac{c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i}f_{iy}^{\alpha_i}}{x_iy_i} \Bigg\rangle \\
+=\Bigg \langle f_{ix'}^{\alpha_i'}f_{iy'}^{\alpha_i'} \Bigg|V_{jk}^S\Bigg( \Big|\sum_{\alpha_k} \sum_{kx}\sum_{ky}\frac{c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k}f_{ky}^{\alpha_k}}{x_ky_k}\Big \rangle  + \Big|\sum_{\alpha_j} \sum_{jx}\sum_{jy}\frac{c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j}f_{jy}^{\alpha_j}}{x_jy_j}\Big \rangle \Bigg)
+\]</span></p>
+<p><span class="math display">\[
+\Bigg\langle f_{jx'}^{\alpha_j'}f_{jy'}^{\alpha_j'} \Bigg|E-H_0-V_{ki}-W_j \Bigg|\sum_{\alpha_j} \sum_{jx}\sum_{jy} \frac{c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j}f_{jy}^{\alpha_j}}{x_jy_j} \Bigg\rangle \\
+=\Bigg \langle f_{jx'}^{\alpha_j'}f_{jy'}^{\alpha_j'} \Bigg|V_{ki}^S\Bigg( \Big|\sum_{\alpha_k} \sum_{kx}\sum_{ky}\frac{c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k}f_{ky}^{\alpha_k}}{x_ky_k}\Big \rangle  + \Big|\sum_{\alpha_i} \sum_{ix}\sum_{iy}\frac{c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i}f_{iy}^{\alpha_i}}{x_iy_i}\Big \rangle \Bigg)
+\]</span></p>
+<p>Then we can write them in a compact term as following</p>
+<p><span class="math display">\[
+\Bigg[ E[I_{\alpha_k}]\otimes[I_{kx}]\otimes[I_{ky}]-[I_{\alpha_k}]\otimes[T_{kx}]\otimes[I_{ky}] - [I_{\alpha_k}]\otimes[I_{kx}]\otimes[T_{ky}] - [V_{ij}]\otimes[I_{ky}] -[W_k]\Bigg]c_{kx,ky}^{k,\alpha_k} \\
+=\Big([V_{ij}^S]\otimes [I_{ky}]\Big)\Big ( [R_{kx,ky,ix,iy}^{\alpha_k\gets\alpha_i}]c_{ix,iy}^{i,\alpha_i} + [R_{kx,ky,jx,jy}^{\alpha_k\gets\alpha_j}]c_{jx,jy}^{j,\alpha_j}\Big)
+\]</span></p>
+<p><span class="math display">\[
+\Bigg[ E[I_{\alpha_i}]\otimes[I_{ix}]\otimes[I_{iy}]-[I_{\alpha_i}]\otimes[T_{ix}]\otimes[I_{iy}] - [I_{\alpha_i}]\otimes[I_{ix}]\otimes[T_{iy}] - [V_{jk}]\otimes[I_{iy}] -[W_i]\Bigg]c_{ix,iy}^{i,\alpha_i} \\
+=\Big([V_{jk}^S]\otimes [I_{iy}]\Big)\Big ( [R_{ix,iy,kx,ky}^{\alpha_i\gets\alpha_k}]c_{kx,ky}^{k,\alpha_k} + [R_{ix,iy,jx,jy}^{\alpha_i\gets\alpha_j}]c_{jx,jy}^{j,\alpha_j}\Big)
+\]</span></p>
+<p><span class="math display">\[
+\Bigg[ E[I_{\alpha_j}]\otimes[I_{jx}]\otimes[I_{jy}]-[I_{\alpha_j}]\otimes[T_{jx}]\otimes[I_{jy}] - [I_{\alpha_j}]\otimes[I_{jx}]\otimes[T_{jy}] - [V_{ki}]\otimes[I_{jy}] -[W_j]\Bigg]c_{jx,jy}^{j,\alpha_j} \\
+=\Big([V_{ki}^S]\otimes [I_{jy}]\Big)\Big ( [R_{jx,jy,kx,ky}^{\alpha_j\gets\alpha_k}]c_{kx,ky}^{k,\alpha_k} + [R_{jx,jy,ix,iy}^{\alpha_j\gets\alpha_i}]c_{ix,iy}^{i,\alpha_i}\Big)
+\]</span></p>
+<p>The Lagrange-Laguerre mesh regularized function can be defined as</p>
+<p><span class="math display">\[
+\begin{align}
+\hat{f}_{ax}(x_{a'}) &amp;= \frac{x_{a'}}{x_a} f_{ax}(x_{a'})=\lambda_{ax}^{-1/2} \delta_{a,a'}, \ \ \ \ \ a\in\{i,j,k\} \\
+\hat{f}_{ay}(y_{a'}) &amp;= \frac{y_{a'}}{y_a} f_{ay}(y_{a'})=\lambda_{ay}^{-1/2} \delta_{a,a'}, \ \ \ \ \ a\in\{i,j,k\}
+\end{align}
+\]</span></p>
+<p>Since the regularized function is not orthogonal, then we have</p>
+<p><span class="math display">\[
+\begin{align}
+[I_{ax}] = \langle \hat{f}_{ax'}| \hat{f}_{ax}\rangle &amp;=  \delta_{ax,ax'} + \frac{(-)^{ax-ax'}}{\sqrt{x_ax_{a'}}}, \ \ \ \ \ a\in \{i,j,k\} \\
+[I_{ay}] = \langle \hat{f}_{ay'}| \hat{f}_{ay}\rangle &amp;=  \delta_{ay,ay'} + \frac{(-)^{ay-ay'}}{\sqrt{y_ay_{a'}}}, \ \ \ \ \ a\in \{i,j,k\}
+\end{align}
+\]</span></p>
+<p>And for the kinetic energy operator, according to Eq.(5.20) of Daniel Baye’s physics reports, one has</p>
+<p><span class="math display">\[
+\begin{align}
+[T_{ax}] &amp;= \frac{\hbar^2}{2\mu_a^{2b}}\Bigg\{ \langle f_{ax'} | -\frac{d^2}{dr^2} | f_{ax} \rangle^G -(-)^{ax-ax'}\frac{1}{4\sqrt{x_ax_{a'}}} + \frac{l_a(l_a+1)}{x_a^2} \delta_{ax,ax'}\Bigg\}, \\
+[T_{ay}] &amp;= \frac{\hbar^2}{2\mu_a^{3b}}\Bigg\{ \langle f_{ay'} | -\frac{d^2}{dr^2} | f_{ay} \rangle^G -(-)^{ay-ay'}\frac{1}{4\sqrt{y_ay_{a'}}} + \frac{\lambda_a(\lambda_a+1)}{y_a^2} \delta_{ay,ay'}\Bigg\},
+\end{align}
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+\langle f_{ax'}|\frac{d^2}{d r^2}| f_{ax}\rangle^G \equiv  \int_0^{\infty} d r f_{ax'}(r) f''_{ax}(r) =\begin{cases}-\frac{1}{12x_a^2}[x_a^2 - 2(2N+\alpha+1)x_a + \alpha^2 -4 ], &amp; ax=ax', \\
+(-1)^{ax-ax'}\frac{x_a+x_{a'}}{\sqrt{x_ax_{a'}}(x_a-x_{a'})^2}, &amp; ax \neq ax',\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\langle f_{ay'}|\frac{d^2}{d r^2}| f_{ay}\rangle^G \equiv  \int_0^{\infty} d r f_{ay'}(r) f''_{ay}(r) =\begin{cases}-\frac{1}{12y_a^2}[y_a^2 - 2(2N+\alpha+1)y_a + \alpha^2 -4 ], &amp; ay=ay', \\
+(-1)^{ay-ay'}\frac{y_a+y_{a'}}{\sqrt{y_ay_{a'}}(y_a-y_{a'})^2}, &amp; ay \neq ay',\end{cases}
+\]</span></p>
+<p>For the potential matrix we have two possibilities, one for the local potential of <span class="math inline">\(V_{ij}\)</span></p>
+<p><span class="math display">\[
+[V^a] = \langle f_{ax'} | V^a|f_{ax}\rangle =\int_0^\infty f_{ax'}(r)V^a(r)f_{ax}(r)dr=V^a(x_a) \delta_{ax,ax'}
+\]</span></p>
+<p>And for nonlocal potential</p>
+<p><span class="math display">\[
+[V^a] = \langle f_{ax'} | V^a|f_{ax}\rangle =\int_0^\infty f_{ax'}(r')V^a(r',r)f_{ax}(r)dr'dr=\frac{V^a(x_{a'},x_a)}{f_{ax'}(x_{a'})f_{ax}(x_a)}
+\]</span></p>
+<p>For the long-ranged Coulomb interaction, one has</p>
+<p><span class="math display">\[
+[W_a] =  \int_0^\infty dx dy  \Big\langle f_{ax'}^{\alpha_a'} f_{ay'}^{\alpha_a'} \Big| xy \Big\rangle \Big\langle xy\Big| f_{ax}^{\alpha_a} f_{ay}^{\alpha_a} \Big\rangle W_a^{\alpha_a',\alpha_a}(x,y) = W_a^{\alpha_a',\alpha_a}(x_a,y_a)
+\]</span></p>
+<p>And finally with</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Big[R_{ax,ay,bx,by}^{\alpha_a\gets\alpha_b}\Big] &amp;= \langle f_{ax}^{\alpha_a}f_{ay}^{\alpha_a} | \frac{x_ay_a}{x_by_b} f_{bx}^{\alpha_b}f_{by}^{\alpha_b}\rangle
+=\int dx_ady_a \langle f_{ax}^{\alpha_a}f_{ay}^{\alpha_a} | x_ay_a \rangle \langle x_ay_a|\frac{x_ay_a}{x_by_b} f_{bx}^{\alpha_b}f_{by}^{\alpha_b}\rangle  \\
+&amp;= \int \frac{ dy_b \mathcal{G}_{\alpha_a,\alpha_b}(y_a,y_b,x_0)f_{bx}^{\alpha_b}(\pi_b)f_{by}^{\alpha_b}(y_b)}{f_{ax}^{\alpha_a}(x_a)f_{ay}^{\alpha_a}(y_a)a_{ab}b_{ab}\pi_b} = \frac{ \mathcal{G}_{\alpha_a,\alpha_b}(y_a,y_b,x_0)f_{bx}^{\alpha_b}(\pi_b)}{f_{ax}^{\alpha_a}(x_a)f_{ay}^{\alpha_a}(y_a)f_{by}^{\alpha_b}(y_b)a_{ab}b_{ab}\pi_b}
+\end{aligned}
+\]</span></p>
+</section>
+<section id="eigenvalue-problem-of-the-faddeev-equations" class="level2">
+<h2 class="anchored" data-anchor-id="eigenvalue-problem-of-the-faddeev-equations">Eigenvalue problem of the Faddeev Equations</h2>
+<p>The Faddeev equation can be concisely expressed as follows: <span class="math display">\[
+E[c] = (\tilde{H} + \mathcal{R})[c]
+\]</span> where <span class="math display">\[
+[c] = \begin{bmatrix}
+c_{kx,ky}^{k,\alpha_k} \\
+c_{ix,iy}^{i,\alpha_i} \\
+c_{jx,jy}^{j,\alpha_j}
+\end{bmatrix},
+\]</span> and <span class="math display">\[
+[\tilde{H}] = \begin{bmatrix}
+H_k &amp; 0 &amp; 0 \\
+0 &amp; H_i &amp; 0 \\
+0 &amp; 0 &amp; H_j
+\end{bmatrix},
+\]</span> with <span class="math display">\[
+\begin{align}
+[H_k] &amp;= I_{\alpha_k} \otimes T_{kx} \otimes I_{ky} + I_{\alpha_k} \otimes I_{kx} \otimes T_{ky} + V_{ij} \otimes I_{ky} + W_k, \\
+[H_i] &amp;= I_{\alpha_i} \otimes T_{ix} \otimes I_{iy} + I_{\alpha_i} \otimes I_{ix} \otimes T_{iy} + V_{jk} \otimes I_{iy} + W_i, \\
+[H_j] &amp;= I_{\alpha_j} \otimes T_{jx} \otimes I_{jy} + I_{\alpha_j} \otimes I_{jx} \otimes T_{jy} + V_{ki} \otimes I_{jy} + W_j,
+\end{align}
+\]</span> and <span class="math display">\[
+[\mathcal{R}] = \begin{bmatrix}
+0 &amp; (V_{ij}^s \otimes I_{ky}) R_{kx,ky,ix,iy}^{\alpha_k \gets \alpha_i} &amp; (V_{ij}^s \otimes I_{ky}) R_{kx,ky,jx,jy}^{\alpha_k \gets \alpha_j} \\
+(V_{jk}^s \otimes I_{iy}) R_{ix,iy,kx,ky}^{\alpha_i \gets \alpha_k} &amp; 0 &amp; (V_{jk}^s \otimes I_{iy}) R_{ix,iy,jx,jy}^{\alpha_i \gets \alpha_j} \\
+(V_{ki}^s \otimes I_{jy}) R_{jx,jy,kx,ky}^{\alpha_j \gets \alpha_k} &amp; (V_{ki}^s \otimes I_{jy}) R_{jx,jy,ix,iy}^{\alpha_j \gets \alpha_i} &amp; 0
+\end{bmatrix}.
+\]</span> This formulation encapsulates the interactions and kinetic terms of the particles indexed by <span class="math inline">\(k\)</span>, <span class="math inline">\(i\)</span>, and <span class="math inline">\(j\)</span>, along with their respective coupling matrices.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
