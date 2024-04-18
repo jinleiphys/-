@@ -493,29 +493,41 @@ s_k &amp; S &amp; s_{jk} \\
 \]</span></p>
 <p>Then the Faddeev-Merkuriev equations in the Lagrange mesh basis can be rewritten as</p>
 <p><span class="math display">\[
+\begin{align}
 \Bigg\langle f_{kx'}^{\alpha_k'}f_{ky'}^{\alpha_k'} \Bigg|E-H_0-V_{ij}-W_k \Bigg|\sum_{\alpha_k} \sum_{kx}\sum_{ky} \frac{c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k}f_{ky}^{\alpha_k}}{x_ky_k} \Bigg\rangle \\
 =\Bigg \langle f_{kx'}^{\alpha_k'}f_{ky'}^{\alpha_k'} \Bigg|V_{ij}^S\Bigg( \Big|\sum_{\alpha_i} \sum_{ix}\sum_{iy}\frac{c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i}f_{iy}^{\alpha_i}}{x_iy_i}\Big \rangle  + \Big|\sum_{\alpha_j} \sum_{jx}\sum_{jy}\frac{c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j}f_{jy}^{\alpha_j}}{x_jy_j}\Big \rangle \Bigg)
+\end{align}
 \]</span></p>
 <p><span class="math display">\[
+\begin{align}
 \Bigg\langle f_{ix'}^{\alpha_i'}f_{iy'}^{\alpha_i'} \Bigg|E-H_0-V_{jk}-W_i \Bigg|\sum_{\alpha_i} \sum_{ix}\sum_{iy} \frac{c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i}f_{iy}^{\alpha_i}}{x_iy_i} \Bigg\rangle \\
 =\Bigg \langle f_{ix'}^{\alpha_i'}f_{iy'}^{\alpha_i'} \Bigg|V_{jk}^S\Bigg( \Big|\sum_{\alpha_k} \sum_{kx}\sum_{ky}\frac{c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k}f_{ky}^{\alpha_k}}{x_ky_k}\Big \rangle  + \Big|\sum_{\alpha_j} \sum_{jx}\sum_{jy}\frac{c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j}f_{jy}^{\alpha_j}}{x_jy_j}\Big \rangle \Bigg)
+\end{align}
 \]</span></p>
 <p><span class="math display">\[
+\begin{align}
 \Bigg\langle f_{jx'}^{\alpha_j'}f_{jy'}^{\alpha_j'} \Bigg|E-H_0-V_{ki}-W_j \Bigg|\sum_{\alpha_j} \sum_{jx}\sum_{jy} \frac{c_{jx,jy}^{j,\alpha_j}f_{jx}^{\alpha_j}f_{jy}^{\alpha_j}}{x_jy_j} \Bigg\rangle \\
 =\Bigg \langle f_{jx'}^{\alpha_j'}f_{jy'}^{\alpha_j'} \Bigg|V_{ki}^S\Bigg( \Big|\sum_{\alpha_k} \sum_{kx}\sum_{ky}\frac{c_{kx,ky}^{k,\alpha_k}f_{kx}^{\alpha_k}f_{ky}^{\alpha_k}}{x_ky_k}\Big \rangle  + \Big|\sum_{\alpha_i} \sum_{ix}\sum_{iy}\frac{c_{ix,iy}^{i,\alpha_i}f_{ix}^{\alpha_i}f_{iy}^{\alpha_i}}{x_iy_i}\Big \rangle \Bigg)
+\end{align}
 \]</span></p>
 <p>Then we can write them in a compact term as following</p>
 <p><span class="math display">\[
+\begin{align}
 \Bigg[ E[I_{\alpha_k}]\otimes[I_{kx}]\otimes[I_{ky}]-[I_{\alpha_k}]\otimes[T_{kx}]\otimes[I_{ky}] - [I_{\alpha_k}]\otimes[I_{kx}]\otimes[T_{ky}] - [V_{ij}]\otimes[I_{ky}] -[W_k]\Bigg]c_{kx,ky}^{k,\alpha_k} \\
 =\Big([V_{ij}^S]\otimes [I_{ky}]\Big)\Big ( [R_{kx,ky,ix,iy}^{\alpha_k\gets\alpha_i}]c_{ix,iy}^{i,\alpha_i} + [R_{kx,ky,jx,jy}^{\alpha_k\gets\alpha_j}]c_{jx,jy}^{j,\alpha_j}\Big)
+\end{align}
 \]</span></p>
 <p><span class="math display">\[
+\begin{align}
 \Bigg[ E[I_{\alpha_i}]\otimes[I_{ix}]\otimes[I_{iy}]-[I_{\alpha_i}]\otimes[T_{ix}]\otimes[I_{iy}] - [I_{\alpha_i}]\otimes[I_{ix}]\otimes[T_{iy}] - [V_{jk}]\otimes[I_{iy}] -[W_i]\Bigg]c_{ix,iy}^{i,\alpha_i} \\
 =\Big([V_{jk}^S]\otimes [I_{iy}]\Big)\Big ( [R_{ix,iy,kx,ky}^{\alpha_i\gets\alpha_k}]c_{kx,ky}^{k,\alpha_k} + [R_{ix,iy,jx,jy}^{\alpha_i\gets\alpha_j}]c_{jx,jy}^{j,\alpha_j}\Big)
+\end{align}
 \]</span></p>
 <p><span class="math display">\[
+\begin{align}
 \Bigg[ E[I_{\alpha_j}]\otimes[I_{jx}]\otimes[I_{jy}]-[I_{\alpha_j}]\otimes[T_{jx}]\otimes[I_{jy}] - [I_{\alpha_j}]\otimes[I_{jx}]\otimes[T_{jy}] - [V_{ki}]\otimes[I_{jy}] -[W_j]\Bigg]c_{jx,jy}^{j,\alpha_j} \\
 =\Big([V_{ki}^S]\otimes [I_{jy}]\Big)\Big ( [R_{jx,jy,kx,ky}^{\alpha_j\gets\alpha_k}]c_{kx,ky}^{k,\alpha_k} + [R_{jx,jy,ix,iy}^{\alpha_j\gets\alpha_i}]c_{ix,iy}^{i,\alpha_i}\Big)
+\end{align}
 \]</span></p>
 <p>The Lagrange-Laguerre mesh regularized function can be defined as</p>
 <p><span class="math display">\[
