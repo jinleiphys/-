@@ -2,9 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/Faddeev-equations-in-R/index.html",
-      "/posts/welcome/index.html"
+      "/posts/Coulomb-potential-in-P/index.html",
+      "/posts/Faddeev-equations-in-R/index.html"
     ]
   }
 ]

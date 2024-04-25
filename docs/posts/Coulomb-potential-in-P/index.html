@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tristan O’Malley">
-<meta name="dcterms.date" content="2024-04-14">
+<meta name="author" content="Jin Lei">
+<meta name="dcterms.date" content="2024-04-25">
 
-<title>notes - Welcome To My Blog</title>
+<title>notes - Coulomb Potential in P Space</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -110,11 +139,8 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Welcome To My Blog</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">news</div>
-              </div>
-                  </div>
+      <h1 class="title">Coulomb Potential in P Space</h1>
+                      </div>
   </div>
     
   
@@ -123,14 +149,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Tristan O’Malley </p>
+               <p>Jin Lei </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 14, 2024</p>
+        <p class="date">April 25, 2024</p>
       </div>
     </div>
     
@@ -149,11 +175,56 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+<section id="coulomb-potential-in-momentum-space" class="level2">
+<h2 class="anchored" data-anchor-id="coulomb-potential-in-momentum-space">Coulomb potential in momentum space</h2>
+<p>The Coulomb potential in coordinate space has the form: <span class="math display">\[
+V_C = \begin{cases}
+\frac{Z_1Z_2e^2}{2R} (3 - (r/R)^2) &amp; \text{for } r &lt; R \\
+\frac{Z_1Z_2e^2}{r} &amp; \text{for } r \geq R
+\end{cases}
+\]</span></p>
+<p>We divide the Coulomb potential into a long-range term and a short-range term <span class="math inline">\(V_C = V^s_C + V^l_C\)</span>, where: <span class="math display">\[
+V^l_C = \frac{Z_1Z_2e^2}{r}
+\]</span></p>
+<p><span class="math display">\[
+V^s_C = \frac{Z_1Z_2e^2}{2R} (3 - (r/R)^2) - \frac{Z_1Z_2e^2}{r} \quad \text{for } r &lt; R
+\]</span></p>
+<p>Since the short-range term can be numerically difficult to Fourier transform into momentum space, we now focus on the long-range term.</p>
+<p><span class="math display">\[
+\begin{align}
+\langle \vec{k}' | V^l_C | \vec{k} \rangle &amp;= \int \langle \vec{k}' | \vec{r}' \rangle \langle \vec{r}' | V^l_C | \vec{r} \rangle \langle \vec{r} | \vec{k} \rangle d^3r d^3r' \\
+&amp;= \int \frac{e^{-i \vec{k}' \cdot \vec{r}'}}{(2\pi)^{3/2}} \delta(\vec{r}' - \vec{r}) V^l_C(\vec{r}) \frac{e^{i \vec{k} \cdot \vec{r}}}{(2\pi)^{3/2}} d^3r d^3r' \\
+&amp;= \int \frac{e^{i (\vec{k}-\vec{k}’) \cdot \vec{r}}}{(2\pi)^3} \frac{Z_1Z_2e^2}{r} d^3r \\
+&amp;= \frac{Z_1Z_2e^2}{(2\pi)^2} \int_0^{{R_{cut}}} dr \int_{-1}^{1} r e^{i q rx} dx \\
+&amp;= \frac{Z_1Z_2e^2}{(2\pi)^2} \int_0^{R_{cut}} dr \left( \frac{e^{iqr} - e^{-iqr}}{iq} \right) \\
+&amp;= \frac{Z_1Z_2e^2}{2\pi^2 q} \int_0^{R_{cut}}  \sin(qr) dr \\
+&amp;= \frac{Z_1Z_2e^2}{2\pi^2 q^2} (1 - \cos(q \cdot {R_{cut}}))
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(q = |\vec{k} - \vec{k}'|\)</span>.</p>
+<p>For the limit <span class="math inline">\(q \to 0\)</span>, we have: <span class="math display">\[
+\langle \vec{k}' | V_C^l | \vec{k} \rangle = \frac{Z_1Z_2e^2}{(2\pi)^2 q} (1 - \cos(q \cdot R_{cut}))
+\]</span> Expanding <span class="math inline">\(\cos x\)</span> in a Taylor series:</p>
+<p><span class="math display">\[
+\cos x = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^6}{720} + \dots
+\]</span> Thus, for small <span class="math inline">\(q \to 0\)</span> if we only consider the second order effects, one has <span class="math display">\[
+\langle \vec{k}' | V_C^l | \vec{k} \rangle = \frac{Z_1Z_2e^2  R_{cut}}{4\pi^2}
+\]</span> In practical terms, we need the partial wave form of the potential in momentum space: <span class="math display">\[
+\begin{align}
+\langle k'l'm_l' |V_C^l| k l m_l \rangle &amp;= \int \langle k'l' m_l'| \tilde{\vec{k}}'\rangle \langle  \tilde{\vec{k}}' |V_C^l| \tilde{\vec{k}} \rangle \langle  \tilde{\vec{k}} |  k l m_l \rangle \ d^3\tilde{k}' \ d^3\tilde{k}\  \delta_{l,l'} \delta_{m_l,m_l'} \nonumber \\
+&amp; = \int \frac{\delta(k'-\tilde{k}')}{\tilde{k}'^2} Y_{l'}^{m_l'*}(\hat{k}') \langle \vec{\tilde{k}}' |V_C^l|\vec{\tilde{k}} \rangle \frac{\delta(k-\tilde{k})}{\tilde{k}^2} Y_{l}^{m_l}(\hat{k})  \tilde{k}^2 \tilde{k}'^2 d \tilde{k} d\tilde{k}' d\hat{\tilde{k}} d\hat{\tilde{k}}'  \delta_{l,l'} \delta_{m_l,m_l'} \nonumber \\
+&amp; =\int  Y_{l'}^{m_l'*}(\hat{k}')\langle \vec{{k}}' |V_C^l|\vec{{k}} \rangle
+Y_{l}^{m_l}(\hat{k}) d\hat{{k}} d\hat{{k}}'  \delta_{l,l'} \delta_{m_l,m_l'}  
+\end{align}
+\]</span> If we choose <span class="math inline">\(\hat{z}\)</span> as the <span class="math inline">\(\vec{k}\)</span> direction, then: <span class="math display">\[
+\begin{align}
+\langle k'l'm_l' |V_C^l| k l m_l \rangle &amp; = \int \Big(\frac{2l'+1}{4\pi}\Big)^{1/2} P_{l'} (\cos\theta)\langle \vec{{k}}' |V_C^l|\vec{{k}} \rangle \Big(\frac{2l+1} {4\pi}\Big)^{1/2} 8\pi^2 d\cos\theta \delta_{l,l'} \delta_{m_l',m_l} \nonumber\\
+&amp;= 2\pi \sqrt{(2l'+1)(2l+1)} P_{l'} (\cos\theta)\langle \vec{{k}}' |V_C^l|\vec{{k}} \rangle d\cos\theta \delta_{l,l'} \delta_{m_l',m_l}
+\end{align}
+\]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
