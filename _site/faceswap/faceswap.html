@@ -23,24 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +66,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">notes</span>
     </a>
   </div>
@@ -149,7 +89,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -165,163 +105,88 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">notes</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
 
+<p><strong>使用免费资源进行faceswap换脸</strong></p>
+<p>前段时间想学习一下机器学习的相关知识，但是面对枯燥乏味的数学公式，真的很难跟实际应用联系起来。想起来前段时间有个比较火的深度学习的项目faceswap,即一种人脸替换深度学习项目。由于项目本身是开源，并且能够在github下载到，只需在github上搜索deepfakes/faceswap即可。</p>
+<p>最开始的时候在自己手上的macbook pro上做模型训练，发现速度真的跟蜗牛爬差不多。因此本着白嫖的心态，在网上搜索免费的GPU资源。发现Google旗下的colab可以获得免费强大的Tesla K80单片，如果每个月交9.9美元的话就可以获得更强大的Tesla P100。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/jinleiphys/notes/blob/master/faceswap/gpu.jpeg?raw=true" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<p>但是问题是colab支持的是jupyter nootbooks格式，如果想在colab上做模型训练必须要把faceswap代码转换成jupyter nootbooks吗？难道不可以使用ssh直接连接colab吗？继续搜索发现以下解决方案：</p>
+<ul>
+<li><p>首先借助Ngrok，它是一个连接公共网络和本地网络的一个代理软件，需要在它的网站上注册一个账号，并且下载运行它的软件，让这个网站可以通过特定的识别码找到你的本地电脑。当然它也是免费的 <img src="https://github.com/jinleiphys/notes/blob/master/faceswap/ngrok.jpeg?raw=true" class="img-fluid" alt="alt text"></p></li>
+<li><p>建立一个新的colab notebook， 点开Edit-&gt;Notebook settings,选中GPU和python3 <img src="https://github.com/jinleiphys/notes/blob/master/faceswap/notebook_setting.jpeg?raw=true" class="img-fluid" alt="alt text"></p></li>
+<li><p>复制运行以下代码显示分配到的GPU信息，如下所示我分配到了16G显存的P100 &gt; gpu_info = !nvidia-smi<br>
+gpu_info = ‘’.join(gpu_info)<br>
+if gpu_info.find(‘failed’) &gt;= 0:<br>
+print(‘Select the Runtime → “Change runtime type” menu to enable a GPU accelerator,’)<br>
+print(‘and then re-execute this cell.’)<br>
+else:<br>
+print(gpu_info)</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/jinleiphys/notes/blob/master/faceswap/gpu_info.jpeg?raw=true" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>挂载Google drive <img src="https://github.com/jinleiphys/notes/blob/master/faceswap/google_drive.jpeg?raw=true" class="img-fluid" alt="alt text"></p></li>
+<li><p>复制运行以下代码。根据提示输入相关的信息，建立ssh代理通道</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>!pip install git+https://github.com/demotomohiro/remocolab.git<br>
+import remocolab<br>
+remocolab.setupSSHD()</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/jinleiphys/notes/blob/master/faceswap/colab.jpeg?raw=true" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>根据输出的提示即可使用ssh连接到服务器</p></li>
+<li><p>因为colab分配的服务器，会不定时的刷新重启，因此没有办法在colab本地云盘储存东西，需要通过Google drive挂载，这样其实更加方便使用。 ssh连接到服务器后需要获得超级管理员身份才能进去Google drive的目录，超级管理员密码在上一步有显示，只需输入<em>su</em>, 然后进入Google drive目录<em>/content/drive/My&nbsp;Drive/</em></p></li>
+</ul>
+<p>接下来就是使用faceswap进行换脸的实际操作部分了：</p>
+<ul>
+<li>git clone faceswap的源代码</li>
+</ul>
+<blockquote class="blockquote">
+<p>git clone https://github.com/deepfakes/faceswap.git</p>
+</blockquote>
+<ul>
+<li><p>挂载显卡驱动 &gt;export LD_PRELOAD=/usr/lib64-nvidia/libnvidia-ml.so</p></li>
+<li><p>安装faceswap &gt;python3 setup.py &gt; - 选择N,N,Y,Y</p></li>
+<li><p>准备好需要换脸的两个人的照片+视频。 运行下面代码可以从视频中提取人脸 &gt; python3 faceswap.py extract -i source/yifei/videoplayback.mp4 -o source/yifei/face -D s3fd -A fan -M extended -nm hist -min 20 -l 0.4 -een 1 -sz 256 -si 0 -L INFO &gt;- -i 后面接的是要提取的视频， &gt;- -o后面是提取的脸存储的目录 &gt;- 这步骤会生产一个videoplayback_alignments.fsa，这个文件储存的是对应视频中人脸的位置，在最后给视频换脸的时候程序需要这个文件来找到视频中需要换的人脸。</p></li>
+<li><p>在提取人脸的时候，程序可能会把不是人脸的东西识别成人脸，因此需要手动将这些删除，faceswap提供了以下的工具，可以将相似的图片排列起来，然后把不是想要换的人脸删除即可 &gt;python3 tools.py sort -i source/yifei/face -s face -t -1.0 -fp rename -g hist -b 5 -be GPU -lf sort_log.json -L INFO &gt;- -i后面是要排列图片所在的文件夹</p></li>
+<li><p>在删除不必要的图片后，要运行以下代码更新.fsa文件 &gt;python3 tools.py alignments -j remove-faces -a source/yifei/videoplayback_alignments.fsa -fc source/yifei/face -o console -een 1 -sz 256 -L INFO &gt; - -a 后面接的是fsa文件， &gt; - -fc后面接的是人脸文件夹</p></li>
+<li><p>在准备好需要换脸的两个文件夹后，就可以进行模型训练了， 运行以下代码</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>python3 faceswap.py train -A source/yifei/face -ala source/yifei/videoplayback_alignments.fsa -B faces/ofelia -m model/yifei -t Villain -bs 32 -it 1000000 -s 100 -ss 25000 -tia source/yifei/face -tib faces/ofelia -to output/yifei -ps 50 -L INFO - 值得注意的是，这个命令是要把B的脸换到A上的训练 - -A 后面接的是A脸的文件夹 - -B 后面接的是B脸的文件夹 - -m 后面接的是训练的模型储存的位置 - -t 后面接的是训练的方法，官网上给出了好几种模型训练方法，从基础的Lightweight到最佳的Villain， 根据我在Tesla P100显卡的实际测试来看，这几个模型的训练时间相差不大，因此可以选择最佳的Villain - -tia 后面接的是想要查看换脸效果的A脸所在的文件夹 - -tib 后面接的是想要查看换脸效果的B脸所在的文件夹 - -to 后面接的是实时输出换脸效果的照片的文件夹，基本上每隔5分钟，会产生一个对比照片。 - -bs 即Batch Size， 每次训练读取脸的数目 - -it 要进行训练的最大次数 - -s 每XX次训练储存一次模型 - -ss 每XX次训练备份一次模型</p>
+</blockquote>
+<ul>
+<li>当实时输出换脸效果的照片基本满意的时候，就可以对整个视频进行换脸了 &gt;python3 faceswap.py convert -i source/yifei/videoplayback.mp4 -o output -al source/yifei/videoplayback_alignments.fsa -m model/yifei -c color-transfer -M extended -sc none -w ffmpeg -osc 100 -l 0.4 -j 0 -k -L INFO &gt; - -i 后面接的是换脸的视频 &gt; - -o 后面接的是换脸结果存放的位置 &gt; - -al 后面接的是.fsa文件，即存储的视频中需要换的脸在视频中位置 &gt; - -m 后面接的是换脸模型的位置</li>
+</ul>
+<p>最后给出一个实际换脸的例子，之前有人说我家宝宝和刘亦菲长的有点像，于是就把我家宝宝的脸换到了刘亦菲的脸上，效果如下</p>
 
 
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1730736000000" data-listing-file-modified-sort="1730795171497" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="428">
-<div class="thumbnail">
-<p><a href="./posts/3b-reaction-model/index.html" class="no-external"></a></p><a href="./posts/3b-reaction-model/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/3b-reaction-model/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/3b-reaction-model/index.html" class="no-external">Three Body Reaction Model</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/3b-reaction-model/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/3b-reaction-model/index.html" class="no-external">In the study of deuteron-nucleus (<span class="math inline">\(d+A\)</span>) reactions—including elastic scattering, transfer, and elastic breakup processes—it is standard to use a three-body model. Most…<span class="math display"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/3b-reaction-model/index.html" class="no-external">
-<div class="listing-date">
-Nov 5, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1716480000000" data-listing-file-modified-sort="1717382830455" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="286">
-<div class="thumbnail">
-<p><a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external"></a></p><a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Continuum-effects-in-breakup/com_CDCC_wf_abs2.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">Continuum Effects in Breakup Reactions</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">In principle, there are different ways to compute the elastic breakup observables. For example, in the IAV model, one has <span class="math display">\[
-\begin{align}
-\frac{d^2 \sigma}{dE_b d\Omega_b}…</span><span class="math display"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">
-<div class="listing-date">
-May 24, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1713974400000" data-listing-file-modified-sort="1714015463916" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="364">
-<div class="thumbnail">
-<p><a href="./posts/Coulomb-potential-in-P/index.html" class="no-external"></a></p><a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Coulomb-potential-in-P/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">Coulomb Potential in P Space</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">The Coulomb potential in coordinate space has the form: <span class="math display">\[
-V_C = \begin{cases}
-\frac{Z_1Z_2e^2}{2R} (3 - (r/R)^2) &amp; \text{for } r &lt; R \\
-\frac{Z_1Z_2e^2}{r} &amp; \text{for } r…</span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">
-<div class="listing-date">
-Apr 25, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1713283200000" data-listing-file-modified-sort="1730789997951" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2547">
-<div class="thumbnail">
-<p><a href="./posts/Faddeev-equations-in-R/index.html" class="no-external"></a></p><a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Faddeev-equations-in-R/Jacobi.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Faddeev-equations-in-R/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">Faddeev Equations in R Space</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">The Faddeev equations provide a rigorous framework for the analysis of three-body systems in quantum mechanics. These equations are particularly useful in the study of…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">
-<div class="listing-date">
-Apr 17, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

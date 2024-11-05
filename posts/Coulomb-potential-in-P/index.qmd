@@ -1,0 +1,72 @@
+---
+format: 
+  html:
+    page-layout: article
+title: "Coulomb Potential in P Space"
+author: "Jin Lei"
+date: "2024-04-25"
+---
+## Coulomb potential in momentum space 
+
+The Coulomb potential in coordinate space has the form:
+$$
+V_C = \begin{cases} 
+\frac{Z_1Z_2e^2}{2R} (3 - (r/R)^2) & \text{for } r < R \\
+\frac{Z_1Z_2e^2}{r} & \text{for } r \geq R 
+\end{cases}
+$$
+
+We divide the Coulomb potential into a long-range term and a short-range term $V_C = V^s_C + V^l_C$, where:
+$$
+V^l_C = \frac{Z_1Z_2e^2}{r}
+$$
+
+$$
+V^s_C = \frac{Z_1Z_2e^2}{2R} (3 - (r/R)^2) - \frac{Z_1Z_2e^2}{r} \quad \text{for } r < R
+$$
+
+Since the short-range term can be numerically difficult to Fourier transform into momentum space, we now focus on the long-range term.
+
+$$
+\begin{align}
+\langle \vec{k}' | V^l_C | \vec{k} \rangle &= \int \langle \vec{k}' | \vec{r}' \rangle \langle \vec{r}' | V^l_C | \vec{r} \rangle \langle \vec{r} | \vec{k} \rangle d^3r d^3r' \\
+&= \int \frac{e^{-i \vec{k}' \cdot \vec{r}'}}{(2\pi)^{3/2}} \delta(\vec{r}' - \vec{r}) V^l_C(\vec{r}) \frac{e^{i \vec{k} \cdot \vec{r}}}{(2\pi)^{3/2}} d^3r d^3r' \\
+&= \int \frac{e^{i (\vec{k}-\vec{k}’) \cdot \vec{r}}}{(2\pi)^3} \frac{Z_1Z_2e^2}{r} d^3r \\
+&= \frac{Z_1Z_2e^2}{(2\pi)^2} \int_0^{{R_{cut}}} dr \int_{-1}^{1} r e^{i q rx} dx \\
+&= \frac{Z_1Z_2e^2}{(2\pi)^2} \int_0^{R_{cut}} dr \left( \frac{e^{iqr} - e^{-iqr}}{iq} \right) \\
+&= \frac{Z_1Z_2e^2}{2\pi^2 q} \int_0^{R_{cut}}  \sin(qr) dr \\
+&= \frac{Z_1Z_2e^2}{2\pi^2 q^2} (1 - \cos(q \cdot {R_{cut}}))
+\end{align}
+$$
+
+where $q = |\vec{k} - \vec{k}'|$. 
+
+For the limit $q \to 0$, we have:
+$$
+\langle \vec{k}' | V_C^l | \vec{k} \rangle = \frac{Z_1Z_2e^2}{(2\pi)^2 q} (1 - \cos(q \cdot R_{cut}))
+$$
+Expanding $\cos x$ in a Taylor series:
+
+$$
+\cos x = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^6}{720} + \dots
+$$
+Thus, for small $q \to 0$ if we only consider the second order effects, one has 
+$$
+\langle \vec{k}' | V_C^l | \vec{k} \rangle = \frac{Z_1Z_2e^2  R_{cut}}{4\pi^2}
+$$
+In practical terms, we need the partial wave form of the potential in momentum space:
+$$
+\begin{align}
+\langle k'l'm_l' |V_C^l| k l m_l \rangle &= \int \langle k'l' m_l'| \tilde{\vec{k}}'\rangle \langle  \tilde{\vec{k}}' |V_C^l| \tilde{\vec{k}} \rangle \langle  \tilde{\vec{k}} |  k l m_l \rangle \ d^3\tilde{k}' \ d^3\tilde{k}\  \delta_{l,l'} \delta_{m_l,m_l'} \nonumber \\
+& = \int \frac{\delta(k'-\tilde{k}')}{\tilde{k}'^2} Y_{l'}^{m_l'*}(\hat{k}') \langle \vec{\tilde{k}}' |V_C^l|\vec{\tilde{k}} \rangle \frac{\delta(k-\tilde{k})}{\tilde{k}^2} Y_{l}^{m_l}(\hat{k})  \tilde{k}^2 \tilde{k}'^2 d \tilde{k} d\tilde{k}' d\hat{\tilde{k}} d\hat{\tilde{k}}'  \delta_{l,l'} \delta_{m_l,m_l'} \nonumber \\ 
+& =\int  Y_{l'}^{m_l'*}(\hat{k}')\langle \vec{{k}}' |V_C^l|\vec{{k}} \rangle
+Y_{l}^{m_l}(\hat{k}) d\hat{{k}} d\hat{{k}}'  \delta_{l,l'} \delta_{m_l,m_l'}  
+\end{align}
+$$
+If we choose $\hat{z}$ as the $\vec{k}$ direction, then:
+$$
+\begin{align}
+\langle k'l'm_l' |V_C^l| k l m_l \rangle & = \int \Big(\frac{2l'+1}{4\pi}\Big)^{1/2} P_{l'} (\cos\theta)\langle \vec{{k}}' |V_C^l|\vec{{k}} \rangle \Big(\frac{2l+1} {4\pi}\Big)^{1/2} 8\pi^2 d\cos\theta \delta_{l,l'} \delta_{m_l',m_l} \nonumber\\
+&= 2\pi \sqrt{(2l'+1)(2l+1)} P_{l'} (\cos\theta)\langle \vec{{k}}' |V_C^l|\vec{{k}} \rangle d\cos\theta \delta_{l,l'} \delta_{m_l',m_l}
+\end{align}
+$$

@@ -1,0 +1,45 @@
+---
+format: 
+  html:
+    page-layout: article
+title: "Continuum Effects in Breakup Reactions"
+author: "Jin Lei"
+date: "2024-05-24"
+---
+## Continuum Effects in Breakup Reactions 
+
+In principle, there are different ways to compute the elastic breakup observables. For example, in the IAV model, one has 
+$$
+\begin{align}
+\frac{d^2 \sigma}{dE_b d\Omega_b} \Big |_\mathrm{EBU} = \frac{2\pi}{\hbar v_a} \rho_b(E_b) \rho_x(E_x) \frac{1}{2j_a+1}\frac{1}{2s_A+1}\sum_{m_a}\sum_{m_A}\sum_{m_b}\sum_{m_x}\int \Big|\langle  \chi_x^{(-)m_x, m_A} (\vec{k}_x) | \rho^{m_b,j_\mathrm{in}}(\vec{k}_b) \rangle \Big|^2 d\Omega_x.
+\end{align}
+$$
+where 
+$$
+\begin{align}
+\langle r_x \gamma | \rho^{m_b,j_\mathrm{in}} (\vec{k}_b)  \rangle = &\sum_{\alpha_\mathrm{out}} \int dr_b r_b^2 \langle r_x \gamma \chi_b^{m_b(-)} (\vec{k}_b)| r_x r_b \alpha_\mathrm{out} \rangle \sum_{\alpha_\mathrm{cdcc}}\int_{-1}^{1} dx V_\mathrm{post} (r_x,r_b,x,\alpha_\mathrm{cdcc})\mathcal{G}^{\mathrm{out}\gets \mathrm{in}}_{\alpha_\mathrm{cdcc},\alpha_\mathrm{out}}(r_xr_bx)  \nonumber \\ 
+& \times \langle r_{bx}r_a \alpha_\mathrm{cdcc} | \Psi^{j_\mathrm{in}(+)}  \rangle,
+\end{align}
+$$
+In this case, the continuum effects of the CDCC wave function act as a whole, then transfer to the $b+(x+A)$ Jacobi system. There are interference terms between different bin states in the continuum.
+
+On the other hand, when we consider computing the elastic breakup observables in the prior form, such as Eq.(19) of the supplementary materials, one has 
+$$
+\begin{align}
+\sigma(\beta n) =& \int \frac{d\sigma(\beta n)}{d\Omega_k} d\Omega_k =\frac{1}{2j_a+1} \frac{1}{2j_A+1} \frac{\mu_{(bx)A}^2}{\hbar^4}\frac{2^4\pi}{K_0^3K} \sum_{\tilde{\alpha}\tilde{\alpha}'}\sum_{\tilde{\alpha}_0} \nonumber \\
+& \times \left|\int dR\  u_{\tilde{\alpha},\tilde{\alpha}}(R)\left(U_{\tilde{\alpha},\tilde{\alpha}'}(R)-\tilde{U}_{\tilde{\alpha},\tilde{\alpha}}(R)\delta_{\tilde{\alpha},\tilde{\alpha}'}\right) u_{\tilde{\alpha}' \tilde{\alpha}_0}(R)  \right|^2.
+\end{align}
+$$
+In this case, as you can see, the sum of different continuum bin states is outside the modulus square, so there is no interference between different continuum states.
+
+For instance, I plot the CDCC wave function, comparing different quantities.
+
+![](com_CDCC_wf_abs2.png)
+
+In this figure, the modulus squared of the scattering wave function is shown:
+
+1. **g.s.** is the result of $|u_{\tilde{\alpha}_0 \tilde{\alpha}_0}(R)|^2$.
+2. **CC1** is the result of $|\sum_{\tilde{\alpha}'=1}^n u_{\tilde{\alpha}' \tilde{\alpha}_0}(R)|^2$, where the sum of the scattering wave functions is computed before taking the modulus squared.
+3. **CC2** is the result of $\sum_{\tilde{\alpha}'=1}^n |u_{\tilde{\alpha}' \tilde{\alpha}_0}(R)|^2$, which is the sum of the modulus squared of each continuum state scattering wave function.
+
+CC1 reflects the IAV form, and CC2 reflects the CDCC-prior form. However, in both cases, the effects of continuum states are small compared to the ground states.
