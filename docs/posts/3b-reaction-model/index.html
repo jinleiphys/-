@@ -182,22 +182,47 @@ H_M = H_0 + V_{np} + U_{nA} + U_{pA}
 \]</span> Here, <span class="math inline">\(H_0\)</span> represents the kinetic energy operator for the three particles, <span class="math inline">\(V_{np}\)</span> is the nucleon-nucleon interaction, and <span class="math inline">\(U_{nA}\)</span> and <span class="math inline">\(U_{pA}\)</span> are the optical potentials for the neutron and proton in the target nucleus’s field. These potentials are evaluated at an energy of <span class="math inline">\(E_d/2\)</span>, where <span class="math inline">\(E_d = E_3 - \epsilon_d\)</span> and <span class="math inline">\(\epsilon_d\)</span> is the deuteron binding energy.</p>
 <p>The Hamiltonian <span class="math inline">\(H_M\)</span> serves as an approximation to the more comprehensive three-body Hamiltonian <span class="math inline">\(H_3\)</span>, which provides an exact description of the <span class="math inline">\(d+A\)</span> system: <span class="math display">\[
 H_3 = H_0 + V_{np} + \mathcal{U}_{nA}(E_3-K_p) + \mathcal{U}_{pA}(E_3-K_n) + W_{npA}
-\]</span> Originally proposed by Austern and Richards<span class="math inline">\([1]\)</span>, <span class="math inline">\(H_3\)</span> incorporates antisymmetrized complex “optical” potentials <span class="math inline">\(\mathcal{U}_{nA}\)</span> and <span class="math inline">\(\mathcal{U}_{pA}\)</span>, which describe neutron and proton elastic scattering with the nucleus, evaluated at energies <span class="math inline">\(E_3-K_p\)</span> and <span class="math inline">\(E_3-K_n\)</span> respectively. Here, <span class="math inline">\(K_p\)</span> and <span class="math inline">\(K_n\)</span> are the kinetic energy operators for the spectator proton and neutron. The term <span class="math inline">\(W_{npA}\)</span> represents the effective three-body interaction, which is notably complex to evaluate.</p>
+\]</span> Originally proposed by Austern and Richards [<a href="#1">1</a>], <span class="math inline">\(H_3\)</span> incorporates antisymmetrized complex “optical” potentials <span class="math inline">\(\mathcal{U}_{nA}\)</span> and <span class="math inline">\(\mathcal{U}_{pA}\)</span>, which describe neutron and proton elastic scattering with the nucleus, evaluated at energies <span class="math inline">\(E_3-K_p\)</span> and <span class="math inline">\(E_3-K_n\)</span> respectively. Here, <span class="math inline">\(K_p\)</span> and <span class="math inline">\(K_n\)</span> are the kinetic energy operators for the spectator proton and neutron. The term <span class="math inline">\(W_{npA}\)</span> represents the effective three-body interaction, which is notably complex to evaluate.</p>
 <p>To derive <span class="math inline">\(H_M\)</span> from <span class="math inline">\(H_3\)</span>, two approximations are made: the three-body interaction <span class="math inline">\(W_{npA}\)</span> is considered negligible, and the optical potentials <span class="math inline">\(\mathcal{U}_{nA}\)</span> and <span class="math inline">\(\mathcal{U}_{pA}\)</span> are approximated by the energy-independent potentials <span class="math inline">\(U_{nA}\)</span> and <span class="math inline">\(U_{pA}\)</span>. Generally, <span class="math inline">\(H_3\)</span> can also be rewritten as: <span class="math display">\[
 H_3 = H_0 + V_{np} + U_{nA} + U_{pA} + U_{npA}
 \]</span> where <span class="math inline">\(U_{npA}\)</span> includes both the three-body interaction <span class="math inline">\(W_{npA}\)</span> and the energy-dependent parts of the optical potentials <span class="math inline">\(\mathcal{U}_{nA}\)</span> and <span class="math inline">\(\mathcal{U}_{pA}\)</span>. Next, let’s discuss the explicit form of the three-body interaction <span class="math inline">\(U_{npA}\)</span>.</p>
-<p>The <span class="math inline">\(d+A\)</span> process is a many-body scattering state <span class="math inline">\(|\Psi_{k_d, A}^{(+)}\rangle\)</span> corresponding to a deuteron with momentum <span class="math inline">\(\vec{k}_d\)</span> in its ground state <span class="math inline">\(|\phi_0\rangle\)</span> incident on a target in its ground state <span class="math inline">\(|\phi_A\rangle\)</span>. The many-body scattering state satisfies: <span class="math display">\[
+The <span class="math inline">\(d+A\)</span> process is a many-body scattering state <span class="math inline">\(|\Psi_{k_d, A}^{(+)}\rangle\)</span> corresponding to a deuteron with momentum <span class="math inline">\(\vec{k}_d\)</span> in its ground state <span class="math inline">\(|\phi_0\rangle\)</span> incident on a target in its ground state <span class="math inline">\(|\phi_A\rangle\)</span>. The many-body scattering state satisfies: <span class="math display">\[
 (E-H)|\Psi_{k_d, A}^{(+)}\rangle = 0
-\]</span> The many-body Hamiltonian <span class="math inline">\(H\)</span> can be written as: <span class="math display">\[
+\]</span> The many-body Hamiltonian <span class="math inline">\(H\)</span> can be written as [<a href="#2">2</a>]:
+<div id="equationH">
+<p><span class="math display">\[
 H = H_0 + V_{np} + U_{nA} + U_{pA} + H_A + \Delta v_{nA} + \Delta v_{pA}
-\]</span> where <span class="math inline">\(H_A\)</span> is the internal Hamiltonian of the target nucleus, and <span class="math inline">\(\Delta v_{nA}\)</span> and <span class="math inline">\(\Delta v_{pA}\)</span> are the remaining parts of the nucleon-nucleon force acting on the neutron and proton in the target nucleus. To simplify the discussion, we ignore the three-body nucleon-nucleon-nucleus (NNN) force.</p>
+\]</span></p>
+</div>
+<p>where <span class="math inline">\(H_A\)</span> is the internal Hamiltonian of the target nucleus, and <span class="math inline">\(\Delta v_{nA}\)</span> and <span class="math inline">\(\Delta v_{pA}\)</span> are the remaining parts of the nucleon-nucleon force acting on the neutron and proton in the target nucleus. To simplify the discussion, we ignore the three-body nucleon-nucleon-nucleus (NNN) force.</p>
 <p>Projection operators <span class="math inline">\(P_A\)</span> and <span class="math inline">\(Q_A\)</span> project onto the ground state and excited states of the nucleus <span class="math inline">\(A\)</span>, respectively, and satisfy: <span class="math display">\[
 P_A + Q_A = 1, \quad P_A^2 = P_A, \quad Q_A^2 = Q_A, \quad P_AQ_A = Q_AP_A = 0
 \]</span> <span class="math display">\[
 P_A | \phi_A \rangle = | \phi_A \rangle, \quad Q_A | \phi_A \rangle = 0
 \]</span></p>
+<p>Following the Feshbach formalism [<a href="#3">3</a>], the many-body scattering state can be expressed as: <span class="math display">\[
+| \Psi_P^{(+)} \rangle = P_A | \Psi_{k_d, A}^{(+)} \rangle, \quad | \Psi_Q^{(+)} \rangle = Q_A | \Psi_{k_d, A}^{(+)} \rangle,
+\]</span> by projecting onto the ground and excited states of the nucleus. The Schrödinger equation for the many-body scattering state is given by: <span class="math display">\[
+(E-P_AHP_A)| \Psi_P^{(+)} \rangle -P_AHQ_A| \Psi_Q^{(+)} \rangle = 0,
+\]</span> <span class="math display">\[
+(E-Q_AHQ_A)| \Psi_Q^{(+)} \rangle -Q_AHP_A| \Psi_P^{(+)} \rangle = 0.
+\]</span> From the second equation, we obtain: <span class="math display">\[
+| \Psi_Q^{(+)} \rangle = \frac{1}{(E+i\epsilon-Q_AHQ_A)}Q_AHP_A| \Psi_P^{(+)} \rangle.
+\]</span> Substituting this expression into the first equation, we derive the equation for the ground state component of the many-body scattering state: <span class="math display">\[
+(E-P_AHP_A)| \Psi_P^{(+)} \rangle -P_AHQ_A\frac{1}{(E+i\epsilon-Q_AHQ_A)}Q_AHP_A| \Psi_P^{(+)} \rangle = 0.
+\]</span> By inserting the Hamiltonian <a href="#equationH"><span class="math inline">\(H\)</span></a> into the equation, we obtain the following equation for the ground state component of the many-body scattering state: <span class="math display">\[
+\begin{align}
+\Bigg[E_3-H_0-V_{np}-U_{nA}-U_{pA}-\langle \phi_A |\Delta v_{nA} + \Delta v_{pA}|\phi_A \rangle -\langle \phi_A | (\Delta v_{nA} + \Delta v_{pA}) Q_A \frac{1}{E+i\epsilon -Q_A H Q_A} Q_A (\Delta v_{nA} + \Delta v_{pA}) |\phi_A \rangle \Bigg] |\Psi_P^{(+)} \rangle =0,
+\end{align}
+\]</span> where <span class="math inline">\(E_3=E-E_A\)</span> with <span class="math inline">\(E_A\)</span> being the ground state binding energy of the target nucleus <span class="math inline">\(A\)</span>. We use the fact that <span class="math inline">\(E+i\epsilon-H_0-V_{np}-U_{nA}-U_{pA}\)</span> commutes with <span class="math inline">\(P_A\)</span> and <span class="math inline">\(Q_A\)</span> since these projectors only act on the internal coordinates of projectile <span class="math inline">\(A\)</span>. It is convenient to define the effective three-body interaction <span class="math inline">\(U_{npA}\)</span> as: <span class="math display">\[
+U_{npA} = \Bigg\langle \phi_A \Bigg| (\Delta v_{nA} + \Delta v_{pA}) + (\Delta v_{nA} + \Delta v_{pA}) Q_A \frac{1}{E+i\epsilon -Q_A H Q_A} Q_A (\Delta v_{nA} + \Delta v_{pA}) \Bigg|\phi_A\Bigg \rangle.
+\]</span> In terms of <span class="math inline">\(U_{npA}\)</span>, the equation for the ground state component of the many-body scattering state can be rewritten as: <span class="math display">\[
+\Bigg[E_3-H_0-V_{np}-U_{nA}-U_{pA} -U_{npA} \Bigg] |\Psi_P^{(+)} \rangle =0.
+\]</span></p>
 <p><strong>References:</strong></p>
-<p>[1] Austern, N., &amp; Richards, K. C. (1968). <em>Annals of Physics</em>, 49, 309.</p>
+<p><a name="1">[1]</a> N. Austern and K. C. Richards, <em>Annals of Physics</em> 49, 309-319 (1968).</p>
+<p><a name="2">[2]</a> R. C. Johnson and N. K. Timofeyuk, <em>Physical Review C</em> 89, 024605 (2014)</p>
+<p><a name="3">[3]</a> Herman Feshbach, <em>Annals of Physics</em> 19, 287-313 (1962).</p>
 
 
 </section>
