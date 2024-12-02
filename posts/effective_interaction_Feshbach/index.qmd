@@ -1,0 +1,279 @@
+---
+format: 
+  html:
+    page-layout: article
+title: "Effecive Interaction from Feshbach Projection in Three Body Model Space"
+author: "Jin Lei"
+date: "2024-12-2"
+---
+# Notes on Effective Interaction Using the Feshbach Projection Method in a Three-Body Model Space
+
+## Introduction
+
+This discussion focuses on the effective interaction in a three-body model space using the Feshbach projection method. We consider the reaction of $d + A$, where the system's model space Hamiltonian is given by:
+
+$$
+H = T_{np} + T_{dA} + V_{np} + U_{pA} + U_{nA}
+$$
+
+## Unit Operator in the Model Space
+
+The unit operator in this three-body model space can be expressed as:
+
+$$
+\mathbb{1} = \sum_{\alpha} \int R^{2} dR \left|\phi_{np}^{0} R \alpha\right\rangle \left\langle \phi_{np}^{0} R \alpha\right| + (2\pi)^{-3} \sum_{\alpha} \int R^{2} dR \int d\vec{k} \left|\phi_{np}^{\vec{k}(+)} R \alpha\right\rangle \left\langle \phi_{np}^{\vec{k}(+)} R \alpha\right|
+$$
+
+According to PRC 108 034612(2023), the continuum states can be discretized, allowing the unit operator to be rewritten as:
+
+$$
+\mathbb{1} \approx \sum_{\alpha n} \int R^{2} dR \left|\phi_{np}^{n} R \alpha\right\rangle \left\langle \phi_{np}^{n} R \alpha\right|
+$$
+
+For the $d + A$ reaction, $n = 0$ denotes the deuteron bound state, and $n > 0$ indicates the discretized continuum states of the deuteron.
+
+## Projection Operators
+
+We define the projection operators $P$ and $Q$ as follows:
+
+$$
+\begin{aligned}
+P &= \sum_{\alpha_0} \int R^{2} dR \left|\phi_{np}^{0} R \alpha_0\right\rangle \left\langle \phi_{np}^{0} R \alpha_0\right| \\
+Q &= \sum_{n > 0} \sum_{\alpha} \int R^{2} dR \left|\phi_{np}^{n} R \alpha\right\rangle \left\langle \phi_{np}^{n} R \alpha\right|
+\end{aligned}
+$$
+
+where $\alpha_0$ is the channel index in which the projectile remains in its ground state. These operators have the properties $P^2 = P$, $Q^2 = Q$, $PQ = 0$, and $P + Q = 1$.
+
+## Feshbach Formalism
+
+Using the Feshbach formalism, the three-body scattering state can be expressed as:
+
+$$
+\begin{aligned}
+\left\langle R\alpha | P\Psi^{(+)}\right\rangle &= \left\langle R{\alpha} \mid \varphi_{P}^{(+)}\right\rangle = \left\langle \phi_{np}^{0} R \alpha \mid \Psi^{(+)}\right\rangle \left|\phi_{np}^{0}\right\rangle \\
+\left\langle R\alpha | Q\Psi^{(+)}\right\rangle &= \left\langle R{\alpha} \mid \varphi_{Q}^{(+)}\right\rangle = \sum_{n > 0} \left\langle \phi_{np}^{n} R \alpha \mid \Psi^{(+)}\right\rangle \left|\phi_{np}^{n}\right\rangle
+\end{aligned}
+$$
+
+## Schrödinger Equation for Scattering States
+
+By projecting onto the ground state and bin states of the deuteron, the Schrödinger equation for the three-body scattering state is given by:
+
+$$
+\begin{aligned}
+(E - PHP) \left|\varphi_{P}^{(+)}\right\rangle - PHQ \left|\varphi_{Q}^{(+)}\right\rangle &= 0 \\
+(E - QHQ) \left|\varphi_{Q}^{(+)}\right\rangle - QHP \left|\varphi_{P}^{(+)}\right\rangle &= 0
+\end{aligned}
+$$
+
+From the second equation, we obtain:
+
+$$
+\left|\varphi_{Q}^{(+)}\right\rangle = \frac{1}{E + i\varepsilon - QHQ} QHP \left|\varphi_{P}^{(+)}\right\rangle
+$$
+
+Substituting this expression into the first equation, we derive the equation for the ground state component of the three-body scattering states:
+
+$$
+\begin{aligned}
+(E - PHP) \left|\varphi_{P}^{(+)}\right\rangle - PHQ \frac{1}{E + i\varepsilon - QHQ} QHP \left|\varphi_{P}^{(+)}\right\rangle = 0 \\
+H_{\text{eff}} = PHP + PHQ \frac{1}{E + i\varepsilon - QHQ} QHP
+\end{aligned}
+$$
+
+This formulation provides the effective Hamiltonian $H_{\text{eff}}$ for the system, capturing the interactions within the model space. 
+
+## Partial Wave Components
+
+Returning to the first equation, we project the Schrödinger equation onto the deuteron ground state and express it in partial wave components:
+
+$$
+\begin{aligned}
+(E-P H P) |\varphi_P^{(+)}\rangle &= \Big( E - \sum_{\alpha_0 \alpha_0^{\prime}} \int R^2 R^{\prime 2} d R d R^{\prime} |\phi_{n p}^0 R \alpha_0\rangle \langle \phi_{n p}^{0} R \alpha_0 | H |\phi_{n p}^{0} R^{\prime} \alpha_0^{\prime}\rangle \langle  \phi_{n p}^{0} R^{\prime} \alpha_0^{\prime} |\Big) \\
+&\times  \sum_{\alpha_0^{\prime \prime}} \int R^{\prime \prime2} d R^{\prime \prime} |\phi_{n p}^0 R'' \alpha_0''\rangle \langle \phi_{n p}^0 R'' \alpha_0'' | \Psi^{(+)}\rangle .
+\end{aligned}
+$$
+
+Where
+
+$$
+\begin{aligned}
+\langle \phi_{n p}^0 R \alpha_0 | H | \phi_{n p}^0 R'\alpha_0^{\prime} \rangle &= \langle \phi_{n p}^0 R \alpha_0 | H_{n p} + T_{d A} + U_{n A} + U_{p A} | \phi_{n p}^0 R'\alpha_0^{\prime} \rangle \\
+&= E_0 \frac{\delta(R-R^{\prime})}{R'^2} \delta_{\alpha_0 \alpha_0'} + T_{d A} \frac{\delta(R-R^{\prime})}{R'^2} \delta_{\alpha_0 \alpha_0^{\prime}} +  U_{\alpha_0 0, {\alpha}_0^{\prime} 0} \frac{\delta(R-R^{\prime})}{R'^2}
+\end{aligned}
+$$
+
+With $U_{\alpha_0 0, {\alpha}_0^{\prime} 0}\frac{\delta(R-R^{\prime})}{R'^2}=\langle \phi_{n p} R \alpha_0 | U_{n A} + U_{p A} | \phi_{n p}^0 R^{\prime} \alpha_0^{\prime} \rangle$. In the partial wave basis, the equation becomes:
+
+$$
+\begin{aligned}
+\langle R \alpha_0 | (E - P H P) |\varphi_P^{(+)} \rangle &= \langle R \alpha_0 | \left( E - \sum_{\alpha_0'} \int R^2 \, dR \, |\phi_{n p}^0 R \alpha_0' \rangle (E_0 + T_{dA}) \langle \phi_{n p}^0 R \alpha_0' | \right. \\
+& \quad \left. - \sum_{\alpha_0' \alpha_0''} \int R^2 \, dR \, |\phi_{n p}^0 R \alpha_0' \rangle U_{\alpha_0' 0, \alpha_0^{\prime\prime}0} \langle \phi_{n p}^0 R \alpha_0^{\prime\prime} | \right) \sum_{\alpha_0^{\prime \prime \prime}} \int R''^2 \, dR^{\prime \prime} \, |\phi_{n p}^0 R'' \alpha_0^{\prime \prime \prime} \rangle \langle \phi_{n p}^0 R^{\prime \prime} \alpha_0^{\prime \prime \prime} | \Psi^{(+)} \rangle \\
+&= E\left\langle R{\alpha_0} \mid \varphi_{P}^{(+)}\right\rangle - (E_0+T_{dA})\left\langle R{\alpha_0} \mid \varphi_{P}^{(+)}\right\rangle- \sum_{\alpha_0^{\prime}} U_{\alpha_00, {\alpha}_0^{\prime}0} \left\langle R{\alpha_0'} \mid \varphi_{P}^{(+)}\right\rangle
+\end{aligned}
+$$
+
+### Interaction with Continuum
+
+The interaction with the continuum is expressed as:
+
+$$
+\begin{aligned}
+P H Q |\varphi_{Q}^{(+)}\rangle &= \sum_{n > 0} \sum_{\alpha_0 \alpha^{\prime}} \int R^{2} \, dR \, R'^{2} \, dR^{\prime} |\phi_{n p}^{0} R \alpha_0\rangle \langle \phi_{n p}^{0} R \alpha_0 | H |\phi_{n p}^{n} R^{\prime} \alpha^{\prime}\rangle \langle \phi_{n p}^{n} R^{\prime} \alpha^{\prime} \mid \varphi_{Q}^{(+)}\rangle
+\end{aligned}
+$$
+
+Where
+
+$$
+\begin{aligned}
+\langle \phi_{n p}^{0} R \alpha_0 | H |\phi_{n p}^{n} R^{\prime} \alpha^{\prime}\rangle &= \langle \phi_{n p}^{0} R \alpha_0 | U_{n A} + U_{p A} |\phi_{n p}^{n} R^{\prime} \alpha^{\prime}\rangle \\
+&= U_{\alpha_0 0, \alpha^{\prime} n}(R) \frac{\delta(R - R^{\prime})}{R^{\prime 2}}
+\end{aligned}
+$$
+
+In the partial wave basis:
+
+$$
+\begin{aligned}
+\langle R \alpha_0| P H Q |\varphi_{Q}^{(+)}\rangle &= \sum_{n>0} \sum_{\alpha^{\prime}} U_{\alpha_0 0, \alpha^{\prime} n} \langle \phi_{n p}^{n} R \alpha^{\prime} \mid \Psi^{(+)}\rangle |\phi_{n p}^{0}\rangle
+\end{aligned}
+$$
+
+### CDCC Equations
+
+The three-body Schrödinger equation projected on the deuteron bound state can be rewritten as:
+
+$$
+\begin{align}
+\langle R \alpha_0| E-P H P\left|\varphi_P^{(+)}\right\rangle-\langle R \alpha_0| P H Q\left|\varphi_Q^{(+)}\right\rangle=0. \\
+\Rightarrow  \left(E-E_0- T_{dA}\right)\left\langle \phi_{n p}^0 R \alpha_0 \mid \Psi^{(+)}\right\rangle\left|\phi_{n p}^0\right\rangle-\sum_{\alpha_0^{\prime}} U_{\alpha_0 0, \alpha_0^{\prime} 0}\left\langle \phi_{n p}^0 R{\alpha_0^{\prime}} \mid \Psi^{(+)}\right\rangle\left|\phi_{n p}^0\right\rangle \\
+ -\sum_{\alpha^{\prime}} \sum_{n > 0} U_{\alpha_0 0, \alpha^{\prime} n}\left\langle \phi_{n p}^n R \alpha^{\prime} \mid \Psi^{(+)}\right\rangle\left|\phi_{n p}^0\right\rangle=0. \\
+\Rightarrow  \left(E-E_0- T_{dA}\right)\left\langle \phi_{n p}^0 R \alpha_0 \mid \Psi^{(+)}\right\rangle\left|\phi_{n p}^0\right\rangle -\sum_{\alpha^{\prime}} \sum_{n} U_{\alpha_0 0, \alpha^{\prime} n}\left\langle \phi_{n p}^n R \alpha^{\prime} \mid \Psi^{(+)}\right\rangle\left|\phi_{n p}^0\right\rangle=0.
+\end{align}
+$$
+
+The above equation is the Coupled Discretized Continuum Channels (CDCC) equations, which describe the interaction of the deuteron with the target nucleus $A$.
+
+## Effective interactions
+
+In the partial wave basis, the effective Schrödinger equation for $|\varphi_P^{(+)}\rangle$ becomes:
+
+$$
+\langle R \alpha_0 | (E-H_{\text{eff}}) |\varphi_P^{(+)}\rangle.
+$$
+
+Here, the effective Hamiltonian $H_{\text{eff}}$ is defined as:
+
+$$
+H_{\text{eff}} = P H P + P H Q \frac{1}{E+i \varepsilon - Q H Q} Q H P.
+$$
+
+Substituting this into the equation, we have:
+
+$$
+\langle R \alpha_0 | E - PHP- P H Q \frac{1}{E + i \varepsilon - Q H Q} Q H P |\varphi_P^{(+)}\rangle
+$$
+
+We have already computed the first part of this expression:
+
+$$
+\begin{aligned}
+&\langle R \alpha_0 | E - P H P |\varphi_P^{(+)}\rangle \\
+&= E \langle R \alpha_0 | \varphi_P^{(+)}\rangle - (E_0 + T_{d A}^{\alpha_0}(R)) \langle R{\alpha_0} | \varphi_P^{(+)}\rangle - \sum_{\alpha_0^{\prime}} U_{\alpha_00, \alpha_0^{\prime}0} \langle R{\alpha_0^{\prime}} | \varphi_P^{(+)}\rangle.
+\end{aligned}
+$$
+
+Next, we need to compute the term involving $PHQ$ and $QHP$:
+
+$$
+\langle R \alpha_0 | P H Q \frac{1}{E+i \varepsilon - Q H Q} Q H P |\varphi_P^{(+)}\rangle.
+$$
+
+To evaluate this, we first consider the expression for $Q H Q$:
+
+$$
+\begin{aligned}
+Q H Q &= \sum_{n>0} \sum_{n^{\prime}>0} \sum_\alpha \sum_{\alpha^{\prime}} \int R^2 dR R^{\prime 2} dR^{\prime} |\phi_{n p}^n R \alpha\rangle \langle\phi_{n p}^n R \alpha| H |\phi_{n p}^{n^{\prime}} R^{\prime} \alpha^{\prime}\rangle \langle\phi_{n p}^{n^{\prime}} R^{\prime} \alpha^{\prime}| \\
+&= \sum_{n>0} \sum_{n^{\prime}>0} \sum_\alpha \sum_{\alpha^{\prime}} \int R^2 dR R^{\prime 2} dR^{\prime} |\phi_{n p}^n R \alpha\rangle \left[ (E_n + T^\alpha_{d A}(R)) \frac{\delta(R-R^{\prime})}{R'^2} \delta_{\alpha \alpha^{\prime}} \delta_{n n^{\prime}} + U_{\alpha n, \alpha^{\prime} n^{\prime}}(R) \frac{\delta(R-R^{\prime})}{R^{\prime 2}} \right] \langle\phi_{n p}^{n^{\prime}} R^{\prime} \alpha^{\prime}| \\
+&= \sum_n \sum_\alpha \int R^2 dR |\phi_{n p}^n R\alpha\rangle (E_n + T_{d A}^\alpha(R)) \langle\phi_{n p}^n R \alpha| + \sum_{n>0} \sum_{n^{\prime}>0} \sum_\alpha \sum_{\alpha^{\prime}} \int R^2 dR |\phi_{n p}^n R\alpha\rangle U_{\alpha n, \alpha^{\prime} n^{\prime}} \langle\phi_{n p}^{n^{\prime}} R{\alpha^{\prime}}| \\
+\end{aligned}
+$$
+
+
+
+Similarly, we have the expressions for $PHQ$ and $QHP$:
+$$
+\begin{align}
+PHQ &= \sum_{n>0} \sum_{\alpha_0 \alpha^{\prime}} \int R^2 dR R^{\prime 2} dR^{\prime} |\phi_{n p}^0 R\alpha_0\rangle \langle\phi_{n p}^0 R \alpha_0| H |\phi_{n p}^n R^{\prime} \alpha^{\prime}\rangle \langle\phi_{n p}^n R^{\prime} \alpha^{\prime}| \\
+&= \sum_{n>0} \sum_{\alpha_0\alpha^{\prime}} \int R^2 dR R^{\prime 2} dR^{\prime} |\phi_{n p}^0 R \alpha_0\rangle U_{\alpha_0 0, \alpha^{\prime} n}(R) \frac{\delta(R-R^{\prime})}{R^{\prime 2}} \langle\phi_{n p}^n R^{\prime} \alpha^{\prime}| \\
+&= \sum_{n>0} \sum_{\alpha_0 \alpha^{\prime}} \int R^2 dR |\phi_{n p}^0 R \alpha_0\rangle U_{\alpha_0 0, \alpha^{\prime} n}(R) \langle\phi_{n p}^n R \alpha^{\prime}|.
+\end{align}
+$$
+
+$$
+QHP=\sum_{n>0}\sum_{\alpha \alpha_0'} \int R^2 dR | \phi_{np}^n R\alpha \rangle U_{\alpha n,\alpha_0'0}(R) \langle \phi_{np}^0 R \alpha_0' |
+$$
+
+Now, substituting these into our expression, we obtain:
+$$
+\begin{aligned}
+& \langle R \alpha_0 | P H Q \frac{1}{E+i\varepsilon-Q H Q} Q H P |\varphi_P^{(+)}\rangle \\
+& = \langle R \alpha_0 | \sum_{n>0} \sum_{n^{\prime}>0} \sum_{\alpha_0' \alpha^{\prime}} \sum_{\alpha^{\prime\prime} \alpha_0^{\prime\prime}} \int R^{\prime 2} dR^{\prime} R^{\prime\prime2} dR^{\prime\prime} |\phi_{n p}^0 R^{\prime\prime} \alpha'_0\rangle U_{\alpha_0' 0, \alpha^{\prime}n}(R^{\prime\prime}) \\
+&\times \langle \phi_{np}^n R'' \alpha'|\frac{1}{E+i\epsilon-QHQ}|\phi_{np}^{n'}R'\alpha''\rangle U_{\alpha'' n', \alpha''_00}(R')\langle \phi_{np}^0 R' \alpha''_0 | \varphi_P^{(+)}\rangle\\
+& = \sum_{n>0} \sum_{n^{\prime}>0} \sum_{\alpha^{\prime}} \sum_{\alpha_0''\alpha^{\prime\prime}} \int R^{\prime 2} dR^{\prime} U_{\alpha_0 0, \alpha^{\prime} n}(R) \langle \phi_{n p}^n R \alpha^{\prime} | \frac{1}{E+i\varepsilon-Q H Q} |\phi_{n p}^{n^{\prime}} R^{\prime} \alpha^{\prime\prime}\rangle U_{\alpha^{\prime\prime} n^{\prime}, \alpha_0''0}(R^{\prime}) \\
+& \times \langle R^{\prime} \alpha_0'' | \varphi_P^{(+)}\rangle 
+\end{aligned}
+$$
+
+For the matrix element involving the inverse operator, we approximate as follows:
+
+$$
+\begin{aligned}
+& \langle \phi_{n p}^n R \alpha^{\prime} | \frac{1}{E+i\varepsilon-Q H Q} |\phi_{n p}^{n'} R^{\prime} \alpha^{\prime\prime}\rangle \\
+& = \sum_{\alpha^{\prime\prime\prime}} \sum_{\alpha^{\prime\prime\prime\prime}} \int r^2 R^{\prime\prime\prime 2} dr dR^{\prime\prime\prime} r^{\prime 2} R^{\prime\prime\prime\prime 2} dr^{\prime} dR^{\prime\prime\prime\prime} \langle \phi_{n p}^n R \alpha^{\prime} | r R^{\prime\prime\prime} \alpha^{\prime\prime\prime}\rangle \langle r^{\prime\prime\prime} R^{\prime\prime\prime\prime} \alpha^{\prime\prime\prime\prime} | \phi_{n p}^{n'} R^{\prime} \alpha^{\prime\prime}\rangle \\
+&\times \langle r R''' \alpha'''| \frac{1}{E+i\epsilon-\sum_{n''>0}\sum_\alpha \int \bar{R}^2 d\bar{R}| \phi_{np}^{n''} \bar{R} \alpha \rangle (E+T_{dA}^\alpha(\bar{R}))\langle \phi_{np}^{n''}\bar{R}\alpha|-\sum_{n''>0,n'''>0}\sum_{\alpha,\bar{\alpha}}\int \bar{R}d\bar{R} |\phi_{np}^{n''}\bar{R}\alpha\rangle U_{\alpha n'',\bar{\alpha}n'''}(\bar{R})\langle \phi_{np}^{n'''}\bar{R}\bar{\alpha}}|r' R'''' \alpha'''' \rangle \\
+&=\int r^2r'^2 dr dr' \langle \phi_{np}^n | r\alpha'\rangle \langle r'\alpha'' | \phi_{np}^{n'}\rangle \frac{\delta(R-R')}{R'^2} \frac{1}{E+i\epsilon-\sum_{n''>0}\langle r\alpha'|\phi_{np}^{n''}\rangle(E_{n''}+T_{dA}^{\alpha'}(R))\langle \phi_{np}^{n''}|r' \alpha'' \rangle \delta_{\alpha' \alpha''}-\sum_{n''>0,n'''>0}\langle r\alpha' | \phi_{np}^{n''}\rangle U_{\alpha'n'',\alpha''n'''}(R)\langle \phi_{np}^{n'''}|r'\alpha''\rangle}
+\end{aligned}
+$$
+
+Here, we treat $T_{d A}^{\alpha\prime}(R)$ as a perturbation. Using the Born series expansion, we have:
+
+$$
+\frac{1}{E+i\varepsilon-\tilde{U}-\tilde{T}} = \frac{1}{E+i\varepsilon-\bar{U}} + \frac{1}{E+i\varepsilon-\bar{U}} \tilde{T} \frac{1}{E+i\varepsilon-\tilde{U}-\tilde{T}}
+$$
+
+Where the operators $\tilde{U}$ and $\tilde{T}$ are defined as:
+
+$$
+\tilde{U} = \sum_{n^{\prime\prime}>0} \langle r{\alpha^{\prime}} | \phi_{n p}^{n^{\prime\prime}} \rangle E_n \langle \phi_{n p}^{n^{\prime\prime}} | r^{\prime} \alpha^{\prime\prime} \rangle \delta_{\alpha^{\prime} \alpha^{\prime\prime}} - \sum_{n^{\prime\prime}>0, n^{\prime\prime\prime}>0} \langle r{\alpha^{\prime}} | \phi_{n p}^{n^{\prime\prime}} \rangle U_{\alpha^{\prime} n^{\prime\prime}, \alpha^{\prime\prime} n^{\prime\prime\prime}} \langle \phi_{n p}^{n^{\prime\prime\prime}} | r^{\prime} \alpha^{\prime\prime} \rangle
+$$
+
+$$
+\tilde{T} = \sum_{n^{\prime\prime}>0} \langle r\alpha^{\prime} | \phi_{n p}^{n^{\prime\prime}} \rangle T_{d_A}^{\alpha\prime}(R) \langle \phi_{n p}^{n^{\prime\prime}} | r^{\prime} \alpha^{\prime\prime} \rangle \delta_{\alpha^{\prime} \alpha^{\prime\prime}}
+$$
+
+And we take the first Born approximation:
+
+$$
+\frac{1}{E+i\varepsilon-\bar{U}-\tilde{T}} \approx \frac{1}{E+i\varepsilon-\bar{U}}
+$$
+Finally, we have:
+
+$$
+\begin{align}
+& \langle R \alpha_0 | PHQ\frac{1}{E+i\epsilon-QHQ}QHP|\varphi_P^{(+)} \rangle \\
+& = \sum_{n>0,n'>0} \sum_{\alpha',\alpha''} \sum_{\alpha'_0} U_{\alpha_00,\alpha' n}(R) U_{\alpha''n',\alpha'_00}(R) \int r^2 r'^2 dr dr' \langle \phi_{np}^n |r\alpha' \rangle \langle r' \alpha'' | \phi_{np}^{n'} \rangle \frac{1}{E+i\epsilon-\tilde{U}} \langle R\alpha'_0 | \varphi_{P}^{(+)}\rangle
+\end{align}
+$$
+
+Then the Schrödinger equation for the effective Hamiltonian becomes:
+
+$$
+\begin{aligned}
+& \langle R \alpha_0 | E-H_{\text{eff}} |\varphi_P^{(+)}\rangle = 0 \\
+& \Rightarrow E \langle R \alpha_0 | \varphi_P^{(+)}\rangle - (E_0 + T_{d A}^{\alpha_0}(R)) \langle R \alpha_0 | \varphi_P^{(+)}\rangle - \sum_{\alpha_0^{\prime}} U_{\alpha_0, \alpha_0^{\prime}}(R) \langle R \alpha_0^{\prime} | \varphi_P^{(+)}\rangle \\
+&-\sum_{n>0,n'>0} \sum_{\alpha',\alpha''}\sum_{\alpha_0'} U_{\alpha_00,\alpha' n}(R) U_{\alpha''n',\alpha'_00}(R) \int r^2 r'^2 dr dr' \langle \phi_{np}^n |r\alpha' \rangle \langle r' \alpha'' | \phi_{np}^{n'} \rangle \frac{1}{E+i\epsilon-\tilde{U}} \langle R\alpha'_0 | \varphi_{P}^{(+)}\rangle = 0.
+\end{aligned}
+$$
