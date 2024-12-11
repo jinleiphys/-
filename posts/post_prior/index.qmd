@@ -1,0 +1,13 @@
+---
+format: 
+  html:
+    page-layout: article
+title: "Post-Prior Equivalence in EBU with T-Matrix Form"
+author: "Jin Lei"
+date: "2024-12-11"
+---
+In this note, I will discuss more details about the post-prior equivalence in IAV model with specific detalied discussion on the EBU with T-matrix form. The key equation of the IAV model is 
+$$
+[E_x-T_x -U_x] \psi^{(+)}_x(r_x) = \rho (r_x)
+$$
+

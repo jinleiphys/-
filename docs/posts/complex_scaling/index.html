@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jin Lei">
+<meta name="dcterms.date" content="2024-12-10">
 
-<title>notes</title>
+<title>notes - Complex Scaling for Two Body Scattering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,17 +99,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">notes</span>
     </a>
   </div>
@@ -149,7 +120,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -167,248 +138,91 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">notes</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title">Complex Scaling for Two Body Scattering</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jin Lei </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 10, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1733846400000" data-listing-file-modified-sort="1733905007374" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
-<div class="thumbnail">
-<p><a href="./posts/post_prior/index.html" class="no-external"></a></p><a href="./posts/post_prior/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/post_prior/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post_prior/index.html" class="no-external">Post-Prior Equivalence in EBU with T-Matrix Form</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post_prior/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/post_prior/index.html" class="no-external">In this note, I will discuss more details about the post-prior equivalence in IAV model with specific detalied discussion on the EBU with T-matrix form. The key equation of…<span class="math display"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post_prior/index.html" class="no-external">
-<div class="listing-date">
-Dec 11, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1733760000000" data-listing-file-modified-sort="1733902576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="252">
-<div class="thumbnail">
-<p><a href="./posts/complex_scaling/index.html" class="no-external"></a></p><a href="./posts/complex_scaling/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/complex_scaling/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/complex_scaling/index.html" class="no-external">Complex Scaling for Two Body Scattering</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/complex_scaling/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/complex_scaling/index.html" class="no-external">The radial wave function for the scattering state satisfies the equation: <span class="math display">\[
+<section id="short-range-interactions" class="level2">
+<h2 class="anchored" data-anchor-id="short-range-interactions">Short Range interactions</h2>
+<p>The radial wave function for the scattering state satisfies the equation: <span class="math display">\[
 H_l \psi^{(+)}_l(r) = E \psi^{(+)}_l(r)
 \]</span> where <span class="math display">\[
-H_l = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2}…</span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/complex_scaling/index.html" class="no-external">
-<div class="listing-date">
-Dec 10, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1733068800000" data-listing-file-modified-sort="1733112677935" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1620">
-<div class="thumbnail">
-<p><a href="./posts/effective_interaction_Feshbach/index.html" class="no-external"></a></p><a href="./posts/effective_interaction_Feshbach/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/effective_interaction_Feshbach/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/effective_interaction_Feshbach/index.html" class="no-external">Effecive Interaction from Feshbach Projection in Three Body Model Space</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/effective_interaction_Feshbach/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/effective_interaction_Feshbach/index.html" class="no-external">This discussion focuses on the effective interaction in a three-body model space using the Feshbach projection method. We consider the reaction of <span class="math inline">\(d + A\)</span>, where the…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/effective_interaction_Feshbach/index.html" class="no-external">
-<div class="listing-date">
-Dec 2, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1730736000000" data-listing-file-modified-sort="1731054089212" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="717">
-<div class="thumbnail">
-<p><a href="./posts/3b-reaction-model/index.html" class="no-external"></a></p><a href="./posts/3b-reaction-model/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/3b-reaction-model/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/3b-reaction-model/index.html" class="no-external">Three Body Reaction Model</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/3b-reaction-model/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/3b-reaction-model/index.html" class="no-external">In the study of deuteron-nucleus (<span class="math inline">\(d+A\)</span>) reactions—including elastic scattering, transfer, and elastic breakup processes—it is standard to use a three-body model. Most…<span class="math display"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/3b-reaction-model/index.html" class="no-external">
-<div class="listing-date">
-Nov 5, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1716480000000" data-listing-file-modified-sort="1717382830455" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="286">
-<div class="thumbnail">
-<p><a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external"></a></p><a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Continuum-effects-in-breakup/com_CDCC_wf_abs2.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">Continuum Effects in Breakup Reactions</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">In principle, there are different ways to compute the elastic breakup observables. For example, in the IAV model, one has <span class="math display">\[
-\begin{align}
-\frac{d^2 \sigma}{dE_b d\Omega_b}…</span><span class="math display"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Continuum-effects-in-breakup/index.html" class="no-external">
-<div class="listing-date">
-May 24, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1713974400000" data-listing-file-modified-sort="1714015463916" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="364">
-<div class="thumbnail">
-<p><a href="./posts/Coulomb-potential-in-P/index.html" class="no-external"></a></p><a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Coulomb-potential-in-P/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">Coulomb Potential in P Space</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">The Coulomb potential in coordinate space has the form: <span class="math display">\[
-V_C = \begin{cases}
-\frac{Z_1Z_2e^2}{2R} (3 - (r/R)^2) &amp; \text{for } r &lt; R \\
-\frac{Z_1Z_2e^2}{r} &amp; \text{for } r…</span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Coulomb-potential-in-P/index.html" class="no-external">
-<div class="listing-date">
-Apr 25, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1713283200000" data-listing-file-modified-sort="1730789997951" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2547">
-<div class="thumbnail">
-<p><a href="./posts/Faddeev-equations-in-R/index.html" class="no-external"></a></p><a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/Faddeev-equations-in-R/Jacobi.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Faddeev-equations-in-R/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">Faddeev Equations in R Space</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">The Faddeev equations provide a rigorous framework for the analysis of three-body systems in quantum mechanics. These equations are particularly useful in the study of…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Faddeev-equations-in-R/index.html" class="no-external">
-<div class="listing-date">
-Apr 17, 2024
-</div>
-<div class="listing-author">
-Jin Lei
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+H_l = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + \frac{\hbar^2}{2\mu}\frac{l(l+1)}{r^2} + V(r)
+\]</span></p>
+<p>For boundary conditions: <span class="math display">\[
+\psi^{(+)}_l(0) = 0
+\]</span> <span class="math display">\[
+\psi^{(+)}_l(r) \rightarrow_{r\to \infty} j_l(kr) + kf_l(k)h_l^{(+)}(kr)
+\]</span></p>
+<p>The scattering wave function can typically be decomposed into an incident plane wave and an outgoing spherical wave: <span class="math display">\[
+\psi^{(+)}_l(r) = j_l(kr) + \psi_l^{sc}(r)
+\]</span></p>
+<p>For the outgoing part, it satisfies the inhomogeneous equation: <span class="math display">\[
+(E-H_l)\psi_l^{sc}(r)=V(r)j_l(kr)
+\]</span></p>
+<p>The outgoing wave function <span class="math inline">\(\psi_l^{sc}(r)\)</span> is not square-integrable, and its boundary condition satisfies: <span class="math display">\[
+\psi_l^{sc}(r)\to_{r\to \infty} kf_l(k)h_l^{(+)}(kr)
+\]</span> where <span class="math inline">\(h_l^{(+)}(kr)\xrightarrow{r \to \infty}\exp(i(kr-\frac{l\pi}{2}))\)</span>. The standard complex scaling method is to transform the non-square-integrable function into a square-integrable one, focusing on applying the complex scaling method to the outgoing wave function rather than the entire scattering wave function.</p>
+<p>The complex scaling operator is defined as <span class="math inline">\(U(\theta)\phi(r)=\phi^\theta(r)=\exp(i\theta/2)\phi(r\ \exp(i\theta))\)</span>, where <span class="math inline">\(\phi(r)\)</span> is any wave function and <span class="math inline">\(\theta\)</span> is a real number. Applied to the outgoing spherical wave, we have: <span class="math display">\[
+\psi_l^{sc,\theta} \to_{r\to \infty} e^{i\theta/2} k f_l(k)i^{-l}e^{ikr\cos\theta-kr\sin\theta}
+\]</span></p>
+<p>The complex scaled outgoing spherical wave function satisfies the equation: <span class="math display">\[
+(E-H_l(\theta))\psi^{sc,\theta}_l(r)=e^{i\theta/2}V(re^{i\theta})j_l(kre^{i\theta})
+\]</span> where the Hamiltonian <span class="math inline">\(H_l(\theta)\)</span> is: <span class="math display">\[
+H_l(\theta) = -e^{-2i\theta}\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2} + e^{-2i\theta}\frac{\hbar^2}{2\mu} \frac{l(l+1)}{r^2} + V(re^{i\theta})
+\]</span></p>
+<p>Since <span class="math inline">\(\psi_l^{sc,\theta}(r)\)</span> is a square-integrable wave function, it can be expanded as: <span class="math display">\[
+\psi_l^{sc,\theta}(r) \approx \sum_{i=1}^N c_i(\theta)\phi_i(r)
+\]</span> By comparing the asymptotic behavior, one should note that <span class="math inline">\(c_i(\theta)\)</span> contains the <span class="math inline">\(e^{i\theta/2}\)</span> factor. One can also expand the complex scaled outgoing spherical wave function in terms without the <span class="math inline">\(e^{i\theta/2}\)</span> factor as follows: <span class="math display">\[
+\psi_l^{sc,\theta}(r) \approx \sum_{i=1}^N \tilde{c}_i(\theta)e^{i\theta/2}\phi_i(r)
+\]</span></p>
+<p>The equation of the complex scaled outgoing spherical wave function can be transformed into: <span class="math display">\[
+\sum_{j=1}^{N}\{EO_{ij}-H^l_{ij}(\theta)\}c_j(\theta) = b_i(\theta)
+\]</span> where <span class="math display">\[
+b_i(\theta) = e^{i\theta/2} \int_0^{\infty} dr \phi_i(r) V(re^{i\theta}) j_l(kre^{i\theta}) = e^{i\theta/2} \sum_{j}V_{ij}^\theta \int_0^\infty \phi_j(r) j_l(kre^{i\theta}) dr
+\]</span> <span class="math display">\[
+O_{ij} = \langle \phi_i| \phi_j \rangle
+\]</span> <span class="math display">\[
+H_{ij}^l(\theta) = \langle \phi_i| H_l(\theta)|\phi_j\rangle
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

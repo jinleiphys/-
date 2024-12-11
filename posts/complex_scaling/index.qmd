@@ -1,0 +1,80 @@
+---
+format: 
+  html:
+    page-layout: article
+title: "Complex Scaling for Two Body Scattering"
+author: "Jin Lei"
+date: "2024-12-10"
+---
+## Short Range interactions 
+The radial wave function for the scattering state satisfies the equation:
+$$
+H_l \psi^{(+)}_l(r) = E \psi^{(+)}_l(r)
+$$
+where
+$$
+H_l = -\frac{\hbar^2}{2\mu} \frac{d^2}{dr^2} + \frac{\hbar^2}{2\mu}\frac{l(l+1)}{r^2} + V(r)
+$$
+
+For boundary conditions:
+$$
+\psi^{(+)}_l(0) = 0
+$$
+$$
+\psi^{(+)}_l(r) \rightarrow_{r\to \infty} j_l(kr) + kf_l(k)h_l^{(+)}(kr)
+$$
+
+The scattering wave function can typically be decomposed into an incident plane wave and an outgoing spherical wave:
+$$
+\psi^{(+)}_l(r) = j_l(kr) + \psi_l^{sc}(r)
+$$
+
+For the outgoing part, it satisfies the inhomogeneous equation:
+$$
+(E-H_l)\psi_l^{sc}(r)=V(r)j_l(kr)
+$$
+
+The outgoing wave function $\psi_l^{sc}(r)$ is not square-integrable, and its boundary condition satisfies:
+$$
+\psi_l^{sc}(r)\to_{r\to \infty} kf_l(k)h_l^{(+)}(kr)
+$$
+where $h_l^{(+)}(kr)\xrightarrow{r \to \infty}\exp(i(kr-\frac{l\pi}{2}))$. The standard complex scaling method is to transform the non-square-integrable function into a square-integrable one, focusing on applying the complex scaling method to the outgoing wave function rather than the entire scattering wave function.
+
+The complex scaling operator is defined as $U(\theta)\phi(r)=\phi^\theta(r)=\exp(i\theta/2)\phi(r\ \exp(i\theta))$, where $\phi(r)$ is any wave function and $\theta$ is a real number. Applied to the outgoing spherical wave, we have:
+$$
+\psi_l^{sc,\theta} \to_{r\to \infty} e^{i\theta/2} k f_l(k)i^{-l}e^{ikr\cos\theta-kr\sin\theta}
+$$
+
+The complex scaled outgoing spherical wave function satisfies the equation:
+$$
+(E-H_l(\theta))\psi^{sc,\theta}_l(r)=e^{i\theta/2}V(re^{i\theta})j_l(kre^{i\theta})
+$$
+where the Hamiltonian $H_l(\theta)$ is:
+$$
+H_l(\theta) = -e^{-2i\theta}\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2} + e^{-2i\theta}\frac{\hbar^2}{2\mu} \frac{l(l+1)}{r^2} + V(re^{i\theta})
+$$
+
+Since $\psi_l^{sc,\theta}(r)$ is a square-integrable wave function, it can be expanded as:
+$$
+\psi_l^{sc,\theta}(r) \approx \sum_{i=1}^N c_i(\theta)\phi_i(r)
+$$
+By comparing the asymptotic behavior, one should note that $c_i(\theta)$ contains the $e^{i\theta/2}$ factor. One can also expand the complex scaled outgoing spherical wave function in terms without the $e^{i\theta/2}$ factor as follows:
+$$
+\psi_l^{sc,\theta}(r) \approx \sum_{i=1}^N \tilde{c}_i(\theta)e^{i\theta/2}\phi_i(r)
+$$
+
+
+The equation of the complex scaled outgoing spherical wave function can be transformed into:
+$$
+\sum_{j=1}^{N}\{EO_{ij}-H^l_{ij}(\theta)\}c_j(\theta) = b_i(\theta)
+$$
+where
+$$
+b_i(\theta) = e^{i\theta/2} \int_0^{\infty} dr \phi_i(r) V(re^{i\theta}) j_l(kre^{i\theta}) = e^{i\theta/2} \sum_{j}V_{ij}^\theta \int_0^\infty \phi_j(r) j_l(kre^{i\theta}) dr
+$$
+$$
+O_{ij} = \langle \phi_i| \phi_j \rangle 
+$$
+$$
+H_{ij}^l(\theta) = \langle \phi_i| H_l(\theta)|\phi_j\rangle
+$$

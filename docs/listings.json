@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/post_prior/index.html",
+      "/posts/complex_scaling/index.html",
       "/posts/effective_interaction_Feshbach/index.html",
       "/posts/3b-reaction-model/index.html",
       "/posts/Continuum-effects-in-breakup/index.html",
