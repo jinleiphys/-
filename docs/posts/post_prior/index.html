@@ -175,11 +175,34 @@ window.Quarto = {
 
 
 
-<p>In this note, I will discuss more details about the post-prior equivalence in IAV model with specific detalied discussion on the EBU with T-matrix form. The key equation of the IAV model is <span class="math display">\[
-[E_x-T_x -U_x] \psi^{(+)}_x(r_x) = \rho (r_x)
+<p>After discussing with Junzhe and consulting Dr.&nbsp;Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue from two perspectives: the <span class="math inline">\(S\)</span>-matrix derived from the inhomogeneous equations and the T-matrix form.</p>
+<section id="s-matrix-from-inhomogeneous-equations" class="level2">
+<h2 class="anchored" data-anchor-id="s-matrix-from-inhomogeneous-equations"><span class="math inline">\(S\)</span>-matrix from Inhomogeneous Equations</h2>
+<p>The key equation of the IAV model is given by: <span class="math display">\[
+[E_x - T_x - U_x] \psi^{(+)}_x(\vec{r}_x) = \rho(\vec{r}_x)
 \]</span></p>
+<p>In the post-form representation, due to the lack of a natural cutoff on the <span class="math inline">\(r_x\)</span> variable, <span class="math inline">\(\rho(\vec{r}_x)\)</span> behaves as <span class="math inline">\(O(1/r^2)\)</span> for <span class="math inline">\(r_x \to \infty\)</span>. This behavior implies that <span class="math inline">\(\rho(\vec{r}_x)\)</span> is not square-integrable, meaning the <span class="math inline">\(S\)</span>-matrix is not well-defined. Specifically, in the partial wave basis, the equation can be rewritten as: <span class="math display">\[
+\left\{\frac{\hbar^2}{2\mu_x}\left[\frac{d^2}{dr_x^2} - \frac{l_x(l_x+1)}{r_x^2}\right] + E_x - U_x(r_x)\right\} u_\alpha(r_x) = r\rho_\alpha(r_x)
+\]</span> where <span class="math inline">\(\alpha\)</span> is the channel index. Generally, the asymptotic behavior of <span class="math inline">\(u_\alpha(r_x)\)</span> is: <span class="math display">\[
+u_\alpha(r_x) \to -SH_l^{(+)} \quad \text{as} \quad r_x \to \infty
+\]</span></p>
+<p>However, as pointed out by Rimas, if the source term <span class="math inline">\(r\rho_\alpha(r_x)\)</span> is not compact and behaves as <span class="math inline">\(O(1/r)\)</span>, the boundary condition of <span class="math inline">\(u_\alpha(r_x)\)</span> cannot follow the above form. The reason is that the general solution for a second-order differential equation is a linear combination of two independent solutions, <span class="math inline">\(u(r_x) = A(r_x) + A_0(r_x)\)</span>, where: <span class="math display">\[
+(E + \frac{d^2}{dr^2})A_0(r) = 0
+\]</span> and <span class="math display">\[
+A(r) = \int \left(\int (f(r) - E) \, dr\right) \, dr
+\]</span></p>
+<p>Here, <span class="math inline">\(A_0(r)\)</span> is the general solution and can have an outgoing wave form. However, the drift term <span class="math inline">\(A(r)\)</span> is asymptotically divergent. Assuming the asymptotic behavior of <span class="math inline">\(f(r)\)</span> is <span class="math inline">\(O(1/r)\)</span>, then: <span class="math display">\[
+A(r) \to \int \left(\int \left(\frac{1}{r} - E\right) \, dr\right) \, dr \to \int (\ln(r)) \, dr \to r \ln |r| - r
+\]</span></p>
+<p>This divergence highlights the challenges in defining the boundary conditions and the <span class="math inline">\(S\)</span>-matrix for such systems.</p>
+<p>On the other hand, as Junzhe pointed out, the Hankel function $ H_l^{(+)} $ satisfies the following differential equation: <span class="math display">\[
+\frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = 0
+\]</span> However, if the source term behaves as <span class="math inline">\(O(1/r)\)</span> and we assume the asymptotic behavior of <span class="math inline">\(u_\alpha(r_x) \to -SH^{(+)}_l(r_x)\)</span>, then <span class="math inline">\(H^{(+)}_l(r_x)\)</span> will not satisfy the original equation. Instead, the equation becomes: <span class="math display">\[
+\frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = \frac{1}{x}
+\]</span> This discrepancy indicates that the presence of the <span class="math inline">\(O(1/r)\)</span> source term modifies the differential equation, meaning <span class="math inline">\(H^{(+)}_l(r_x)\)</span> is no longer a valid solution under these conditions. This highlights the need for a different approach to account for the modified source term and its impact on the solution’s asymptotic behavior.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
