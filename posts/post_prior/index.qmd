@@ -6,10 +6,36 @@ title: "Post-Prior Equivalence in EBU with T-Matrix Form"
 author: "Jin Lei"
 date: "2024-12-11"
 ---
+For the reaction process $a + A \to b + B^*$, where the projectile $a$ has a two-body structure $b + x$ and $B^*$ represents any possible states between $x$ and $A$, the IAV model provides a method to compute the relative wave function, $\psi_{xA}$, for the $x + A$ system in this three-body process. The interior part of this wave function gives the nonelastic breakup cross sections, while the asymptotic part provides the elastic breakup (EBU) cross section.
+
+The IAV model offers two approaches to compute this relative wave function: the prior form and the post form. In their paper, they prove the post-prior equivalence in the operator form within the Distorted Wave Born Approximation (DWBA).
+
+In the IAV model using the post form, $\psi_{xA}$ is given by:
+$$
+| \psi_{xA}  \rangle = \frac{1}{E_x + i\epsilon - H_x} \left( \chi_b^{(-)} \left| V_{bx} + U_{bA} - U_{bB} \right| \chi_a^{(+)} \phi_{bx} \right\rangle
+$$
+where $| \cdot \rangle$ denotes integration without the $r_x$ variable. Here, $V_{bx}$ is the $b-x$ interaction, $U_{bB}$ is the $b-B$ interaction, and $U_{bA}$ is the $b-A$ interaction. The $\chi_a^{(+)}$ and $\chi_b^{(-)}$ are the distorted waves of $a$ and $b$, respectively. The $\phi_{bx}$ is the relative wave function between $b$ and $x$, and $H_x$ is the Hamiltonian of $x$.
+
+The relationship between the transition potentials of the post and prior forms is given by:
+$$
+\begin{aligned}
+V_{post} & = V_{prior} + U_{aA} + V_{bx} - U_{xA} - U_{bB} \\
+& = V_{prior} + (U_{aA} + T_{aA}) + (V_{bx} + T_{bx}) - (U_{xA} + T_{xA}) - (U_{bB} + T_{bB})
+\end{aligned}
+$$
+
+In the prior form of the IAV model, the relative wave function is given by:
+$$
+\begin{aligned}
+| \psi_{xA}  \rangle = \frac{1}{E_x + i\epsilon - H_x} ( \chi_b^{(-)}| V_{prior} | \chi_a^{(+)} \phi_{bx} \rangle + ( \chi_b^{(-)}| \chi_a^{(+)} \phi_{bx} \rangle
+\end{aligned}
+$$
+It is numerically easier to solve the prior form of the IAV model. However, due to the long-ranged nature of the source term, solving the post form of the IAV model is more challenging.
+
+
 After discussing with Junzhe and consulting Dr. Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue from two perspectives: the $S$-matrix derived from the inhomogeneous equations and the T-matrix form.
 
 ## $S$-matrix from Inhomogeneous Equations
-
 The key equation of the IAV model is given by:
 $$
 [E_x - T_x - U_x] \psi^{(+)}_x(\vec{r}_x) = \rho(\vec{r}_x)

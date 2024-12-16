@@ -175,6 +175,22 @@ window.Quarto = {
 
 
 
+<p>For the reaction process <span class="math inline">\(a + A \to b + B^*\)</span>, where the projectile <span class="math inline">\(a\)</span> has a two-body structure <span class="math inline">\(b + x\)</span> and <span class="math inline">\(B^*\)</span> represents any possible states between <span class="math inline">\(x\)</span> and <span class="math inline">\(A\)</span>, the IAV model provides a method to compute the relative wave function, <span class="math inline">\(\psi_{xA}\)</span>, for the <span class="math inline">\(x + A\)</span> system in this three-body process. The interior part of this wave function gives the nonelastic breakup cross sections, while the asymptotic part provides the elastic breakup (EBU) cross section.</p>
+<p>The IAV model offers two approaches to compute this relative wave function: the prior form and the post form. In their paper, they prove the post-prior equivalence in the operator form within the Distorted Wave Born Approximation (DWBA).</p>
+<p>In the IAV model using the post form, <span class="math inline">\(\psi_{xA}\)</span> is given by: <span class="math display">\[
+| \psi_{xA}  \rangle = \frac{1}{E_x + i\epsilon - H_x} \left( \chi_b^{(-)} \left| V_{bx} + U_{bA} - U_{bB} \right| \chi_a^{(+)} \phi_{bx} \right\rangle
+\]</span> where <span class="math inline">\(| \cdot \rangle\)</span> denotes integration without the <span class="math inline">\(r_x\)</span> variable. Here, <span class="math inline">\(V_{bx}\)</span> is the <span class="math inline">\(b-x\)</span> interaction, <span class="math inline">\(U_{bB}\)</span> is the <span class="math inline">\(b-B\)</span> interaction, and <span class="math inline">\(U_{bA}\)</span> is the <span class="math inline">\(b-A\)</span> interaction. The <span class="math inline">\(\chi_a^{(+)}\)</span> and <span class="math inline">\(\chi_b^{(-)}\)</span> are the distorted waves of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, respectively. The <span class="math inline">\(\phi_{bx}\)</span> is the relative wave function between <span class="math inline">\(b\)</span> and <span class="math inline">\(x\)</span>, and <span class="math inline">\(H_x\)</span> is the Hamiltonian of <span class="math inline">\(x\)</span>.</p>
+<p>The relationship between the transition potentials of the post and prior forms is given by: <span class="math display">\[
+\begin{aligned}
+V_{post} &amp; = V_{prior} + U_{aA} + V_{bx} - U_{xA} - U_{bB} \\
+&amp; = V_{prior} + (U_{aA} + T_{aA}) + (V_{bx} + T_{bx}) - (U_{xA} + T_{xA}) - (U_{bB} + T_{bB})
+\end{aligned}
+\]</span></p>
+<p>In the prior form of the IAV model, the relative wave function is given by: <span class="math display">\[
+\begin{aligned}
+| \psi_{xA}  \rangle = \frac{1}{E_x + i\epsilon - H_x} ( \chi_b^{(-)}| V_{prior} | \chi_a^{(+)} \phi_{bx} \rangle + ( \chi_b^{(-)}| \chi_a^{(+)} \phi_{bx} \rangle
+\end{aligned}
+\]</span> It is numerically easier to solve the prior form of the IAV model. However, due to the long-ranged nature of the source term, solving the post form of the IAV model is more challenging.</p>
 <p>After discussing with Junzhe and consulting Dr.&nbsp;Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue from two perspectives: the <span class="math inline">\(S\)</span>-matrix derived from the inhomogeneous equations and the T-matrix form.</p>
 <section id="s-matrix-from-inhomogeneous-equations" class="level2">
 <h2 class="anchored" data-anchor-id="s-matrix-from-inhomogeneous-equations"><span class="math inline">\(S\)</span>-matrix from Inhomogeneous Equations</h2>
