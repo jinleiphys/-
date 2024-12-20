@@ -191,14 +191,14 @@ V_{post} &amp; = V_{prior} + U_{aA} + V_{bx} - U_{xA} - U_{bB} \\
 | \psi_{xA}  \rangle = \frac{1}{E_x + i\epsilon - H_x} ( \chi_b^{(-)}| V_{prior} | \chi_a^{(+)} \phi_{bx} \rangle + ( \chi_b^{(-)}| \chi_a^{(+)} \phi_{bx} \rangle
 \end{aligned}
 \]</span> It is numerically easier to solve the prior form of the IAV model. However, due to the long-ranged nature of the source term, solving the post form of the IAV model is more challenging.</p>
-<p>After discussing with Junzhe and consulting Dr.&nbsp;Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue from two perspectives: the <span class="math inline">\(S\)</span>-matrix derived from the inhomogeneous equations and the T-matrix form.</p>
+<p>After discussing with Junzhe and consulting Dr.&nbsp;Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue using the <span class="math inline">\(S\)</span>-matrix derived from the inhomogeneous equations, which has been proven to be equivalent to the T-matrix form.</p>
 <section id="s-matrix-from-inhomogeneous-equations" class="level2">
 <h2 class="anchored" data-anchor-id="s-matrix-from-inhomogeneous-equations"><span class="math inline">\(S\)</span>-matrix from Inhomogeneous Equations</h2>
 <p>The key equation of the IAV model is given by: <span class="math display">\[
 [E_x - T_x - U_x] \psi^{(+)}_x(\vec{r}_x) = \rho(\vec{r}_x)
 \]</span></p>
 <p>In the post-form representation, due to the lack of a natural cutoff on the <span class="math inline">\(r_x\)</span> variable, <span class="math inline">\(\rho(\vec{r}_x)\)</span> behaves as <span class="math inline">\(O(1/r^2)\)</span> for <span class="math inline">\(r_x \to \infty\)</span>. This behavior implies that <span class="math inline">\(\rho(\vec{r}_x)\)</span> is not square-integrable, meaning the <span class="math inline">\(S\)</span>-matrix is not well-defined. Specifically, in the partial wave basis, the equation can be rewritten as: <span class="math display">\[
-\left\{\frac{\hbar^2}{2\mu_x}\left[\frac{d^2}{dr_x^2} - \frac{l_x(l_x+1)}{r_x^2}\right] + E_x - U_x(r_x)\right\} u_\alpha(r_x) = r\rho_\alpha(r_x)
+\left\{\frac{\hbar^2}{2\mu_x}\left[\frac{d^2}{dr_x^2} - \frac{l_x(l_x+1)}{r_x^2}\right] + E_x - U_x(r_x)\right\} u_\alpha(r_x) = r_x\rho_\alpha(r_x)
 \]</span> where <span class="math inline">\(\alpha\)</span> is the channel index. Generally, the asymptotic behavior of <span class="math inline">\(u_\alpha(r_x)\)</span> is: <span class="math display">\[
 u_\alpha(r_x) \to -SH_l^{(+)} \quad \text{as} \quad r_x \to \infty
 \]</span></p>
@@ -223,6 +223,17 @@ This divergence highlights the challenges in defining the boundary conditions an
 \]</span> However, if the source term behaves as <span class="math inline">\(O(1/r)\)</span> and we assume the asymptotic behavior of <span class="math inline">\(u_\alpha(r_x) \to -SH^{(+)}_l(r_x)\)</span>, then <span class="math inline">\(H^{(+)}_l(r_x)\)</span> will not satisfy the original equation. Instead, the equation becomes: <span class="math display">\[
 \frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = \frac{1}{x}
 \]</span> This discrepancy indicates that the presence of the <span class="math inline">\(O(1/r)\)</span> source term modifies the differential equation, meaning <span class="math inline">\(H^{(+)}_l(r_x)\)</span> is no longer a valid solution under these conditions. This highlights the need for a different approach to account for the modified source term and its impact on the solution’s asymptotic behavior.</p>
+</section>
+<section id="comments-on-the-vincent-fortune-method" class="level2">
+<h2 class="anchored" data-anchor-id="comments-on-the-vincent-fortune-method">Comments on the Vincent-Fortune Method</h2>
+<p>The inhomogeneous equation can also be solved using the Green’s function method. The radial part of the wave function in the partial wave basis can be expressed as: <span class="math display">\[
+u_\alpha(r_x) = \int G_\alpha(r_x, r_x') r'_x \rho_\alpha(r_x') \, dr_x'
+\]</span> Since the source term behaves as <span class="math inline">\(O(1/r)\)</span>, the Green’s function <span class="math inline">\(G_\alpha(r_x, r_x')\)</span> is not square-integrable, leading to divergence of the integral and causing the same issue as the <span class="math inline">\(S\)</span>-matrix approach. Vincent and Fortune proposed a method to address this issue by introducing a cutoff in the <span class="math inline">\(r_x\)</span> variable and integrating on the complex plane, making the integration feasible. However, as Junzhe pointed out, this method is not rigorous and may introduce unphysical results.</p>
+<p>The Green’s function <span class="math inline">\(G_\alpha(r_x, r_x')\)</span> can be written as: <span class="math display">\[
+G_\alpha(r_x, r_x') = f_l(r_x&lt;) h_l(r_x&gt;)
+\]</span> where <span class="math inline">\(f_l\)</span> is the regular solution of the homogeneous equation and <span class="math inline">\(h_l\)</span> is the irregular solution of the homogeneous equation with the boundary condition <span class="math inline">\(H_l^{(+)}\)</span>. As Junzhe noted, this solution is only valid when the source term function is compact. In the current case, <span class="math inline">\(h_l\)</span> should be the solution of the equation: <span class="math display">\[
+\frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = \frac{1}{x}
+\]</span> If one directly uses the Green’s function without modifying the irregular solution, the result will be unphysical.</p>
 
 
 </section>

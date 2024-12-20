@@ -33,7 +33,7 @@ $$
 It is numerically easier to solve the prior form of the IAV model. However, due to the long-ranged nature of the source term, solving the post form of the IAV model is more challenging.
 
 
-After discussing with Junzhe and consulting Dr. Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue from two perspectives: the $S$-matrix derived from the inhomogeneous equations and the T-matrix form.
+After discussing with Junzhe and consulting Dr. Rimantas Lazauskas, I concluded that the post-prior equivalence in the EBU with the T-matrix form is not valid. I will address this issue using the $S$-matrix derived from the inhomogeneous equations, which has been proven to be equivalent to the T-matrix form.
 
 ## $S$-matrix from Inhomogeneous Equations
 The key equation of the IAV model is given by:
@@ -43,7 +43,7 @@ $$
 
 In the post-form representation, due to the lack of a natural cutoff on the $r_x$ variable, $\rho(\vec{r}_x)$ behaves as $O(1/r^2)$ for $r_x \to \infty$. This behavior implies that $\rho(\vec{r}_x)$ is not square-integrable, meaning the $S$-matrix is not well-defined. Specifically, in the partial wave basis, the equation can be rewritten as:
 $$
-\left\{\frac{\hbar^2}{2\mu_x}\left[\frac{d^2}{dr_x^2} - \frac{l_x(l_x+1)}{r_x^2}\right] + E_x - U_x(r_x)\right\} u_\alpha(r_x) = r\rho_\alpha(r_x)
+\left\{\frac{\hbar^2}{2\mu_x}\left[\frac{d^2}{dr_x^2} - \frac{l_x(l_x+1)}{r_x^2}\right] + E_x - U_x(r_x)\right\} u_\alpha(r_x) = r_x\rho_\alpha(r_x)
 $$
 where $\alpha$ is the channel index. Generally, the asymptotic behavior of $u_\alpha(r_x)$ is:
 $$
@@ -76,3 +76,20 @@ $$
 \frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = \frac{1}{x}
 $$
 This discrepancy indicates that the presence of the $O(1/r)$ source term modifies the differential equation, meaning $H^{(+)}_l(r_x)$ is no longer a valid solution under these conditions. This highlights the need for a different approach to account for the modified source term and its impact on the solution's asymptotic behavior.
+
+## Comments on the Vincent-Fortune Method
+The inhomogeneous equation can also be solved using the Green's function method. The radial part of the wave function in the partial wave basis can be expressed as:
+$$ 
+u_\alpha(r_x) = \int G_\alpha(r_x, r_x') r'_x \rho_\alpha(r_x') \, dr_x'
+$$
+Since the source term behaves as $O(1/r)$, the Green's function $G_\alpha(r_x, r_x')$ is not square-integrable, leading to divergence of the integral and causing the same issue as the $S$-matrix approach. Vincent and Fortune proposed a method to address this issue by introducing a cutoff in the $r_x$ variable and integrating on the complex plane, making the integration feasible. However, as Junzhe pointed out, this method is not rigorous and may introduce unphysical results.
+
+The Green's function $G_\alpha(r_x, r_x')$ can be written as:
+$$
+G_\alpha(r_x, r_x') = f_l(r_x<) h_l(r_x>) 
+$$
+where $f_l$ is the regular solution of the homogeneous equation and $h_l$ is the irregular solution of the homogeneous equation with the boundary condition $H_l^{(+)}$. As Junzhe noted, this solution is only valid when the source term function is compact. In the current case, $h_l$ should be the solution of the equation:
+$$
+\frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = \frac{1}{x}
+$$
+If one directly uses the Green's function without modifying the irregular solution, the result will be unphysical.
