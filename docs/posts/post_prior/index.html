@@ -202,16 +202,23 @@ V_{post} &amp; = V_{prior} + U_{aA} + V_{bx} - U_{xA} - U_{bB} \\
 \]</span> where <span class="math inline">\(\alpha\)</span> is the channel index. Generally, the asymptotic behavior of <span class="math inline">\(u_\alpha(r_x)\)</span> is: <span class="math display">\[
 u_\alpha(r_x) \to -SH_l^{(+)} \quad \text{as} \quad r_x \to \infty
 \]</span></p>
-<p>However, as pointed out by Rimas, if the source term <span class="math inline">\(r\rho_\alpha(r_x)\)</span> is not compact and behaves as <span class="math inline">\(O(1/r)\)</span>, the boundary condition of <span class="math inline">\(u_\alpha(r_x)\)</span> cannot follow the above form. The reason is that the general solution for a second-order differential equation is a linear combination of two independent solutions, <span class="math inline">\(u(r_x) = A(r_x) + A_0(r_x)\)</span>, where: <span class="math display">\[
+<!-- However, as pointed out by Rimas, if the source term $r\rho_\alpha(r_x)$ is not compact and behaves as $O(1/r)$, the boundary condition of $u_\alpha(r_x)$ cannot follow the above form. The reason is that the general solution for a second-order differential equation is a linear combination of two independent solutions, $u(r_x) = A(r_x) + A_0(r_x)$, where:
+$$
 (E + \frac{d^2}{dr^2})A_0(r) = 0
-\]</span> and <span class="math display">\[
+$$
+and
+$$
 A(r) = \int \left(\int (f(r) - E) \, dr\right) \, dr
-\]</span></p>
-<p>Here, <span class="math inline">\(A_0(r)\)</span> is the general solution and can have an outgoing wave form. However, the drift term <span class="math inline">\(A(r)\)</span> is asymptotically divergent. Assuming the asymptotic behavior of <span class="math inline">\(f(r)\)</span> is <span class="math inline">\(O(1/r)\)</span>, then: <span class="math display">\[
+$$
+
+Here, $A_0(r)$ is the general solution and can have an outgoing wave form. However, the drift term $A(r)$ is asymptotically divergent. Assuming the asymptotic behavior of $f(r)$ is $O(1/r)$, then:
+$$
 A(r) \to \int \left(\int \left(\frac{1}{r} - E\right) \, dr\right) \, dr \to \int (\ln(r)) \, dr \to r \ln |r| - r
-\]</span></p>
-<p>This divergence highlights the challenges in defining the boundary conditions and the <span class="math inline">\(S\)</span>-matrix for such systems.</p>
-<p>On the other hand, as Junzhe pointed out, the Hankel function $ H_l^{(+)} $ satisfies the following differential equation: <span class="math display">\[
+$$
+
+This divergence highlights the challenges in defining the boundary conditions and the $S$-matrix for such systems. -->
+<!-- On the other hand,  -->
+<p>As Junzhe pointed out, the Hankel function <span class="math inline">\(H_l^{(+)}\)</span> satisfies the following differential equation: <span class="math display">\[
 \frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = 0
 \]</span> However, if the source term behaves as <span class="math inline">\(O(1/r)\)</span> and we assume the asymptotic behavior of <span class="math inline">\(u_\alpha(r_x) \to -SH^{(+)}_l(r_x)\)</span>, then <span class="math inline">\(H^{(+)}_l(r_x)\)</span> will not satisfy the original equation. Instead, the equation becomes: <span class="math display">\[
 \frac{\mathrm{d}^2 f}{\mathrm{d} x^2} + \left(1 - \frac{2 \eta}{x} - \frac{\lambda(\lambda+1)}{x^2}\right) f(x) = \frac{1}{x}
